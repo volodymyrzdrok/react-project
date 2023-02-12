@@ -1,3 +1,7 @@
 export const App = () => {
-  return <></>;
+  return (
+    <>
+      <p>працює та й добре</p>
+    </>
+  );
 };
