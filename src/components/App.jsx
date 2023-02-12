@@ -10,7 +10,7 @@ import { lazy } from 'react';
 
 const Home = lazy(() => import('pages/Home/Home.js'));
 
-const App = () => {
+export const App = () => {
   return (
     <Routes>
       <Route path={routes.home} element={<Layout />}>
@@ -20,4 +20,3 @@ const App = () => {
     </Routes>
   );
 };
-export default App;
