@@ -10,7 +10,7 @@ import {
 import { configureStore } from '@reduxjs/toolkit';
 import { session } from './session/sessionSlice';
 import { global } from './global/globalSlice';
-import { finance } from './transactions/financeSlice';
+import { finance } from './finance/financeSlice';
 
 export const store = configureStore({
   reducer: { finance, session, global },
