@@ -25,6 +25,7 @@ export const selectTransactionsSortedByCategory = state =>
 export const selectTransactionsIsLoading = state =>
   state.transactions.isLoading;
 export const selectTransactionsErrorStatus = state => state.transactions.error;
+export const selectTransactionsBalance = state => state.transactions.balance;
 
 export const transactions = transactionsSlice.reducer;
 // export const {  } = transactionsSlice.actions;
