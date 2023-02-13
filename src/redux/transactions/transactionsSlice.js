@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const defaultState = {
-  items: [],
+  transactions: [],
   transactionsSortedByCategory: {
     sorted: [],
     income: 0,
@@ -12,20 +12,19 @@ const defaultState = {
   balance: 0,
 };
 
-export const transactionsSlice = createSlice({
-  name: 'transactions',
+export const financeSlice = createSlice({
+  name: 'finance',
   initialState: defaultState,
   reducers: {},
   extraReducers: builder => {},
 });
 
-export const selectTransactions = state => state.transactions.items;
+export const selectTransactions = state => state.finance.items;
 export const selectTransactionsSortedByCategory = state =>
-  state.transactions.transactionsSortedByCategory;
-export const selectTransactionsIsLoading = state =>
-  state.transactions.isLoading;
-export const selectTransactionsErrorStatus = state => state.transactions.error;
-export const selectTransactionsBalance = state => state.transactions.balance;
+  state.finance.transactionsSortedByCategory;
+export const selectFinanceIsLoading = state => state.finance.isLoading;
+export const selectFinanceErrorStatus = state => state.finance.error;
+export const selectFinancesBalance = state => state.finance.balance;
 
-export const transactions = transactionsSlice.reducer;
-// export const {  } = transactionsSlice.actions;
+export const finance = financeSlice.reducer;
+// export const {  } = financeSlice.actions;
