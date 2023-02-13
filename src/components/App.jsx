@@ -8,7 +8,7 @@ import { lazy } from 'react';
 // import PrivateRoute from './Routes/PrivateRoute';
 // import PublicRoute from './Routes/PublicRoute';
 
-const Home = lazy(() => import('pages/Home/Home.js'));
+const Home = lazy(() => import('pages/HomePage/HomePage.js'));
 
 export const App = () => {
   return (

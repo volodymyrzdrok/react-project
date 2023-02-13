@@ -4,11 +4,9 @@ import Loader from '../Loader/Loader';
 
 const Layout = () => {
   return (
-    <div>
-      <Suspense fallback={<Loader />}>
-        <Outlet />
-      </Suspense>
-    </div>
+    <Suspense fallback={<Loader />}>
+      <Outlet />
+    </Suspense>
   );
 };
 

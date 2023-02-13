@@ -8,9 +8,11 @@ import {
   REGISTER,
 } from 'redux-persist';
 import { configureStore } from '@reduxjs/toolkit';
+import { session } from './session/sessionSlice';
+import { global } from './global/globalSlice';
 
 export const store = configureStore({
-  reducer: {},
+  reducer: { session, global },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
