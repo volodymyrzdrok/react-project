@@ -1,0 +1,108 @@
+// .contentWrapper {
+//   margin: 100px;
+
+//   width: 395px;
+//   height: 330px;
+
+//   border-radius: 30px;
+//   overflow: hidden;
+//   background-color: #4a56e2;
+// }
+
+// .head {
+//   padding: 30px 56px;
+//   display: flex;
+//   justify-content: space-between;
+//   background-color: tomato;
+// }
+
+// .contentBlock {
+//   display: flex;
+
+//   margin-top: 20px;
+//   flex-direction: column;
+//   gap: 24px;
+//   padding: 0 50px;
+// }
+
+// .info {
+//   display: flex;
+//   justify-content: space-between;
+// }
+
+.tWrapper {
+  margin: 100px;
+
+  width: 395px;
+  height: 330px;
+
+  border-radius: 30px;
+  overflow: hidden;
+  background-color: #4a56e2;
+  background-image: url('../../assets/images/Vector7.png');
+  background-repeat: no-repeat;
+  background-position: bottom;
+}
+
+.table {
+  color: #ffffff;
+
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tHead {
+  // height: 60px;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 27px;
+
+  background-color: #747eeb;
+}
+tr {
+  display: flex;
+}
+th,
+td {
+  // border: 1px solid black;
+  padding: 0 8px;
+}
+
+thead th {
+  width: 30%;
+}
+
+td {
+  text-align: center;
+}
+
+.tHead tr {
+  padding: 16px 30px;
+}
+
+tr {
+  display: flex;
+  padding: 0 30px;
+  justify-content: space-around;
+}
+
+th {
+  width: 70px;
+
+  text-align: center;
+}
+td {
+  text-align: center;
+  padding: 12px 0;
+}
+
+th,
+td {
+  // border: 1px solid black;
+}
+
+tr.line {
+  padding-top: 20px;
+}
