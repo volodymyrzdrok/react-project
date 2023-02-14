@@ -1,0 +1,32 @@
+:root {
+  /* TEXT */
+  --mainTextColor: #000000;
+  --secondaryTextColor: #ffffff;
+  --placeholderColor: #bdbdbd;
+  --blueTextColor: #4a56e2;
+  --accentTextColor: #24cca7;
+  --redTextColor: #ff6596;
+  --balanceTextColor: #a6a6a6;
+  --swichTextColor: #e0e0e0;
+
+  /* BACKGROUND */
+  --mainBgnColor: #ffffff;
+  --secondaryBgnColor: #e7eaf2;
+  --accentBgnColor: #24cca7;
+  --redBgnColor: #ff6596;
+  --backdropColor: rgba(0, 0, 0, 0.25);
+  --backdropLightColor: rgba(255, 255, 255, 0.4);
+  --dropdownColor: rgba(255, 255, 255, 0.7);
+
+  /* SHADOW */
+  --boxShadowDropdown: 0px 6px 15px rgba(0, 0, 0, 0.1);
+
+  /* BREAKPOINTS */
+  --mobile: 320px;
+  --tablet: 768px;
+  --desktop: 1280px;
+
+  --to-mobile: 319px;
+  --to-tablet: 767px;
+  --to-desktop: 1279px;
+}
