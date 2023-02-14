@@ -5,6 +5,7 @@ import storage from 'redux-persist/lib/storage';
 const defaultState = {
   isAuthStatus: false,
   user: {
+    userId: '',
     name: '',
     email: '',
   },

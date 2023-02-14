@@ -1,5 +1,7 @@
 @import-normalize;
-@import 'index.css';
+@import './stylesheet/vars';
+
+// @import './pages/HomePage/_HomePage.module.scss';
 
 html {
   scroll-behavior: smooth;
