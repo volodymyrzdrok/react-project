@@ -1,5 +1,7 @@
-@import '../../stylesheet/_vars.scss';
+@import '../../index.scss';
 
 .div {
+  @include font(12px, 24px);
+  font-family: 'Poppins-bold';
   color: $redTextColor;
 }
