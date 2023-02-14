@@ -1,0 +1,31 @@
+@import '../../index.scss';
+
+.navBlock {
+  display: flex;
+  justify-content: center;
+  gap: 32px;
+
+  @include tablet-media {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+.linkBlock {
+  @include centeredFlex(null);
+  gap: 20px;
+}
+
+.navIcon {
+  fill: $navIconsColor;
+
+  @include tablet-media {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.navText {
+  @include font(18px, 27px);
+  color: $mainTextColor;
+}

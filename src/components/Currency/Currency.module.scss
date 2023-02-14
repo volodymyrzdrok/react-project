@@ -1,108 +1,118 @@
-// .contentWrapper {
-//   margin: 100px;
-
-//   width: 395px;
-//   height: 330px;
-
-//   border-radius: 30px;
-//   overflow: hidden;
-//   background-color: #4a56e2;
-// }
-
-// .head {
-//   padding: 30px 56px;
-//   display: flex;
-//   justify-content: space-between;
-//   background-color: tomato;
-// }
-
-// .contentBlock {
-//   display: flex;
-
-//   margin-top: 20px;
-//   flex-direction: column;
-//   gap: 24px;
-//   padding: 0 50px;
-// }
-
-// .info {
-//   display: flex;
-//   justify-content: space-between;
-// }
+@import '../../index.scss';
 
 .tWrapper {
-  margin: 100px;
-
-  width: 395px;
-  height: 330px;
+  width: 280px;
+  height: 175px;
 
   border-radius: 30px;
-  overflow: hidden;
+
   background-color: #4a56e2;
-  background-image: url('../../assets/images/Vector7.png');
+  background-image: url('../../assets/images/tableDecor.png');
   background-repeat: no-repeat;
-  background-position: bottom;
+  background-position: 5% 90%;
+
+  overflow: hidden;
+
+  @include tablet-media {
+    width: 336px;
+    height: 182px;
+  }
+
+  @include desktop-media {
+    width: 395px;
+    height: 330px;
+    background-position: bottom;
+  }
 }
 
 .table {
-  color: #ffffff;
+  color: $secondaryTextColor;
 
   width: 100%;
   border-collapse: collapse;
 }
 
 .tHead {
-  // height: 60px;
+  font-family: 'Circe-bold';
+  @include font(18px, 27px);
+
+  background-color: #6e78e8;
+
+  & > tr {
+    padding: 12px 15px;
+  }
+  & th {
+    width: 33%;
+  }
+
+  @include desktop-media {
+    & > tr {
+      padding: 16px 30px;
+    }
+  }
+}
+
+.tBody {
   font-family: 'Circe';
-  font-style: normal;
-  font-weight: 700;
-  font-size: 18px;
-  line-height: 27px;
-
-  background-color: #747eeb;
-}
-tr {
-  display: flex;
-}
-th,
-td {
-  // border: 1px solid black;
-  padding: 0 8px;
-}
-
-thead th {
-  width: 30%;
-}
-
-td {
-  text-align: center;
-}
-
-.tHead tr {
-  padding: 16px 30px;
+  @include font(16px, 24px);
 }
 
 tr {
   display: flex;
-  padding: 0 30px;
+  padding: 0 10px;
   justify-content: space-around;
+
+  @include desktop-media {
+    padding: 0 30px;
+  }
 }
 
-th {
-  width: 70px;
-
-  text-align: center;
-}
 td {
   text-align: center;
-  padding: 12px 0;
+  padding: 6px 0;
+
+  @include desktop-media {
+    padding: 12px 0;
+  }
 }
 
-th,
-td {
-  // border: 1px solid black;
+.firstLine {
+  padding-top: 12px;
+
+  @include tablet-media {
+    padding-top: 16px;
+  }
+  @include desktop-media {
+    padding-top: 20px;
+  }
 }
 
-tr.line {
-  padding-top: 20px;
-}
+// thead th {
+//   width: 33%;
+// }
+
+// th,
+// td {
+//   padding: 0 8px;
+// }
+
+// .tHead tr {
+//   padding: 16px 30px;
+// }
+
+// tr {
+//   display: flex;
+//   padding: 0 30px;
+//   justify-content: space-around;
+// }
+
+// th {
+//   width: 70px;
+
+//   text-align: center;
+// }
+
+// td {
+//   text-align: center;
+//   padding: 12px 0;
+// }

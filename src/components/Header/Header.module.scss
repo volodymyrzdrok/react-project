@@ -1,35 +1,49 @@
-.header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+@import '../../index.scss';
 
-  height: 80px;
+.header {
+  @include centeredFlex(space-between);
+  height: 60px;
+  background-color: $mainBgnColor;
+
+  @include tablet-media {
+    height: 80px;
+  }
 }
+
 .logoWrapper {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
+
+  @include tablet-media {
+    gap: 20px;
+  }
 }
 
 .text {
-  font-family: 'Poppins';
-  font-weight: 700;
-  font-size: 30px;
-  line-height: 45px;
-  color: #000000;
+  font-family: 'Poppins-bold';
+  @include font(30px, 45px);
+  // font-size: 30px;
+  // line-height: 45px;
+  color: $mainTextColor;
 }
 
 .headerMenu {
   display: flex;
-  gap: 12px;
+  gap: 8px;
 
   font-family: 'Circe';
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 27px;
+  @include font(18, 27);
+  // font-weight: 400;
+  // font-size: 18px;
+  // line-height: 27px;
   text-align: right;
 
-  color: #bdbdbd;
+  color: $headerTextColor;
+
+  @include tablet-media {
+    gap: 12px;
+  }
 }
 
 .logoutBlock {
@@ -37,10 +51,12 @@
   align-items: center;
   gap: 8px;
 
-  padding-left: 12px;
-  border-left: 1px solid #bdbdbd;
+  @include tablet-media {
+    padding-left: 12px;
+    border-left: 1px solid #bdbdbd;
+  }
 }
 
 .logoutIcon {
-  fill: #bdbdbd;
+  fill: $iconColor;
 }

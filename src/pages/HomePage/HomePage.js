@@ -1,25 +1,42 @@
+import { Outlet } from 'react-router-dom';
+
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
 import Header from 'components/Header/Header';
-import { NavLink, Outlet } from 'react-router-dom';
-import routes from 'utils/routes';
-import './_HomePage.module.scss';
+import Navigation from 'components/Navigation/Navigation';
+
 import s from './_HomePage.module.scss';
+import { useMediaQuery } from 'react-responsive';
 
 const HomePage = () => {
+  const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
   return (
     <>
       <Header />
-      <h2 className={s.div}>page Home!</h2>
-      <nav>
-        <NavLink to={routes.statistics}>statistics</NavLink>
-        <NavLink to={routes.dashboard}>dashboard</NavLink>
-      </nav>
-      <p>balance</p>
-      <Balance />
-      <Currency />
+      <div className="container">
+        <div className={s.contentWrapper}>
+          <div>
+            <div className={s.sidebarWrapper}>
+              <div className={s.infoWrapper}>
+                <div className={s.nav}>
+                  <Navigation />
+                </div>
 
-      <Outlet />
+                <Balance />
+              </div>
+              {isTablet && (
+                <div className={s.tableWrapper}>
+                  <Currency />
+                </div>
+              )}
+            </div>
+          </div>
+
+          <div>
+            <Outlet />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

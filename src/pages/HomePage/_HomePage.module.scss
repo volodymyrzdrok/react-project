@@ -1,7 +1,47 @@
 @import '../../index.scss';
 
-.div {
-  @include font(12px, 24px);
-  font-family: 'Poppins-bold';
-  color: $redTextColor;
+// .div {
+//   @include font(12px, 24px);
+//   font-family: 'Poppins-bold';
+//   color: $redTextColor;
+// }
+
+.contentWrapper {
+  @include centeredFlex();
+  flex-direction: column;
+
+  @include tablet-media {
+    gap: 20px;
+  }
+
+  @include desktop-media {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.sidebarWrapper {
+  padding-top: 12px;
+
+  @include tablet-media {
+    display: flex;
+    gap: 32px;
+    padding-top: 40px;
+  }
+
+  @include desktop-media {
+    display: block;
+  }
+}
+
+.infoWrapper {
+  margin-bottom: 32px;
+}
+
+.nav {
+  margin-bottom: 12px;
+
+  @include tablet-media {
+    margin-bottom: 28px;
+  }
 }

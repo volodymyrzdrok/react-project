@@ -13,7 +13,7 @@ const Currency = () => {
           </tr>
         </thead>
         <tbody className={s.tBody}>
-          <tr className={s.line}>
+          <tr className={s.firstLine}>
             <td>USD</td>
             <td>27.55</td>
             <td>27.65</td>
@@ -26,25 +26,6 @@ const Currency = () => {
         </tbody>
       </table>
     </div>
-    // <div className={s.contentWrapper}>
-    //   <div className={s.head}>
-    //     <p>Currency</p>
-    //     <p>Purchase</p>
-    //     <p>Sale</p>
-    //   </div>
-    //   <ul className={s.contentBlock}>
-    //     <li className={s.info}>
-    //       <span>USD</span>
-    //       <span>27.55</span>
-    //       <span>27.65</span>
-    //     </li>
-    //     <li className={s.info}>
-    //       <span>USD</span>
-    //       <span>27.55</span>
-    //       <span>27.65</span>
-    //     </li>
-    //   </ul>
-    // </div>
   );
 };
 
