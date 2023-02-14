@@ -23,10 +23,9 @@
   margin: -1px;
 }
 
-@mixin font($size, $line, $weight) {
+@mixin font($size, $line) {
   font-size: $size;
   line-height: calc($line / $size);
-  font-weight: $weight;
 }
 
 @mixin mobile-only-media {
