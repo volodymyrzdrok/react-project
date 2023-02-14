@@ -1,54 +1,6 @@
 @import-normalize;
+
+@import './stylesheet/fonts';
 @import './stylesheet/vars';
-
-// @import './pages/HomePage/_HomePage.module.scss';
-
-html {
-  scroll-behavior: smooth;
-}
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
-}
-
-ul {
-  list-style: none;
-  padding: 0px;
-  margin: 0px;
-}
-
-img {
-  display: block;
-  max-width: 100%;
-  height: auto;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-p {
-  margin-top: 0;
-  margin-bottom: 0;
-}
-
-a {
-  text-decoration: none;
-  cursor: pointer;
-}
-
-button {
-  cursor: pointer;
-}
-
-/* тут прописати приклади шистьох контейнерів */
+@import './stylesheet/mixins';
+@import './stylesheet/base';
