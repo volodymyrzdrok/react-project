@@ -1,5 +1,7 @@
 @import '../../stylesheet/_vars.scss';
+@import '../../stylesheet/_mixins.scss';
+@import '../../stylesheet/_base.scss';
 
-.div {
+div {
   color: $redTextColor;
 }

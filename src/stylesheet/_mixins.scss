@@ -1,0 +1,60 @@
+@mixin centeredFlex($jusCon: center, $aliIte: center) {
+  display: flex;
+  justify-content: $jusCon;
+  align-items: $aliIte;
+}
+
+@mixin wraper($wrap: wrap, $gap: 30px) {
+  display: flex;
+  flex-wrap: $wrap;
+  gap: $gap;
+}
+
+@mixin visualHidden() {
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  border: 0;
+  padding: 0;
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  margin: -1px;
+}
+
+@mixin font($size, $line, $weight) {
+  font-size: $size;
+  line-height: calc($line / $size);
+  font-weight: $weight;
+}
+
+@mixin mobile-only-media {
+  @media screen and (min-width: $to-mobile) and (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin mobile-media {
+  @media screen and (min-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin tablet-media {
+  @media screen and (min-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin tablet-only-media {
+  @media screen and (min-width: $tablet) and (max-width: $to-desktop) {
+    @content;
+  }
+}
+
+@mixin desktop-media {
+  @media screen and (min-width: $desktop) {
+    @content;
+  }
+}
