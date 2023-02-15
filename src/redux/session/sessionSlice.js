@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import { getUserCurrent, logoutUser } from './sessionOperations';
 
 const defaultState = {
   isAuthStatus: false,
@@ -18,8 +19,66 @@ const defaultState = {
 export const sessionSlice = createSlice({
   name: 'session',
   initialState: defaultState,
-  reducers: {},
-  extraReducers: builder => {},
+  reducers: {
+    resetAuthError(state, action) {
+      state.error = null;
+    },
+  },
+  extraReducers: builder => {
+    builder
+
+      .addCase(logoutUser.fulfilled, (state, { payload }) => {
+        return (state = defaultState);
+      })
+      .addCase(getUserCurrent.fulfilled, (state, { payload }) => {
+        state.isAuthStatus = true;
+        state.user.userId = payload.id;
+        state.user.name = payload.username;
+        state.user.email = payload.email;
+      })
+      .addMatcher(
+        ({ type }) => {
+          return (
+            type === 'session/register/fulfilled' ||
+            type === 'session/login/fulfilled'
+          );
+        },
+        (state, { payload }) => {
+          state.isAuthStatus = true;
+          state.user.userId = payload.user.id;
+          state.user.name = payload.user.username;
+          state.user.email = payload.user.email;
+          state.idToken = payload.token;
+        }
+      )
+      .addMatcher(
+        ({ type }) => {
+          return type.endsWith('pending') && type.startsWith('session');
+        },
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        ({ type }) => {
+          return type.endsWith('fulfilled') && type.startsWith('session');
+        },
+        state => {
+          state.error = null;
+          state.isLoading = false;
+        }
+      )
+      .addMatcher(
+        ({ type }) => {
+          return type.endsWith('rejected') && type.startsWith('session');
+        },
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+          // state.isFetchingCurrentUser = false;
+        }
+      );
+  },
 });
 
 const persistConfig = {
@@ -37,4 +96,4 @@ export const selectFetchingCurrentUser = state =>
 export const selectIsLoadingSession = state => state.session.isLoading;
 
 export const session = persistReducer(persistConfig, sessionSlice.reducer);
-// export const {  } = sessionSlice.actions;
+export const { resetAuthError } = sessionSlice.actions;

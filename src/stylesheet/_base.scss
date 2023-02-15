@@ -1,3 +1,9 @@
+@import-normalize;
+
+@import './fonts';
+@import './vars';
+@import './mixins';
+
 html {
   scroll-behavior: smooth;
 }
