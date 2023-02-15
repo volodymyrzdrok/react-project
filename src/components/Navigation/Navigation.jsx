@@ -41,7 +41,7 @@ const Navigation = () => {
         </li>
         {isMobile && (
           <li className={s.linkBlock}>
-            <NavLink className={s.linkBlock} to={routes.dashboard}>
+            <NavLink className={s.linkBlock} to={routes.currency}>
               <svg className={s.navIcon} width="44" height="44">
                 <use href={`${sprite}#icon-currency`} />
               </svg>

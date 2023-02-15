@@ -1,6 +1,7 @@
 import 'react-toastify/dist/ReactToastify.css';
 import ReactDOM from 'react-dom/client';
 import { App } from 'components/App';
+// import './stylesheet/normalize.css';
 import './stylesheet/_base.scss';
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
