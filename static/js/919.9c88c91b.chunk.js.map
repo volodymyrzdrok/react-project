@@ -1,0 +1,1 @@
+{"version":3,"file":"static/js/919.9c88c91b.chunk.js","mappings":"+IAMA,UAJmB,WACjB,OAAO,qFACR,C","sources":["components/Statistics/Statistics.js"],"sourcesContent":["import React from 'react';\n\nconst Statistics = () => {\n  return <div> тут пончик</div>;\n};\n\nexport default Statistics;\n"],"names":[],"sourceRoot":""}
