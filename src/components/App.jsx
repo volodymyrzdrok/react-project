@@ -1,5 +1,5 @@
-// import { useEffect } from 'react';
-// import { useDispatch, useSelector } from 'react-redux';
+import { useEffect } from 'react';
+import { useDispatch } from 'react-redux';
 // import Loader from './Loader/Loader';
 // import PrivateRoute from './Routes/PrivateRoute';
 // import PublicRoute from './Routes/PublicRoute';
@@ -8,10 +8,10 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import routes from 'utils/routes';
 import Layout from 'components/Layout/Layout';
-import Dashboard from './Dashboard/Dashboard';
-import Statistics from './Statistics/Statistics';
+
 import { useMediaQuery } from 'react-responsive';
 import CurrentPageMobile from 'pages/CurrencyPageMobile/CurrencyPageMobile';
+import { getUserCurrent } from 'redux/session/sessionOperations.js';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 
@@ -19,15 +19,16 @@ const RegistrationPage = lazy(() =>
   import('pages/RegistrationPage/RegistrationPage.js')
 );
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage.js'));
-// const StatisticsPage = lazy(() =>
-//   import('pages/StatisticsPage/StatisticsPage.js')
-// );
-// const DashboardPage = lazy(() =>
-//   import('pages/DashboardPage/DashboardPage.js')
-// );
+const Dashboard = lazy(() => import('./Dashboard/Dashboard.js'));
+const Statistics = lazy(() => import('./Statistics/Statistics.js'));
 
 export const App = () => {
   const isMobileOnly = useMediaQuery({ query: '(max-width: 767px)' });
+
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserCurrent());
+  }, [dispatch]);
 
   return (
     <Routes>

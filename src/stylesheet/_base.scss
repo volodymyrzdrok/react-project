@@ -1,6 +1,8 @@
-* {
-  box-sizing: border-box;
-}
+@import-normalize;
+
+@import './fonts';
+@import './vars';
+@import './mixins';
 
 html {
   scroll-behavior: smooth;
