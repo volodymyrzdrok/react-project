@@ -9,13 +9,16 @@
   background-color: #4a56e2;
   background-image: url('../../assets/images/tableDecor.png');
   background-repeat: no-repeat;
-  background-position: 5% 90%;
+  background-position: 0% 100%;
+  background-size: 280px;
 
   overflow: hidden;
 
   @include tablet-media {
     width: 336px;
     height: 182px;
+    background-size: 100%;
+    background-position: 0 105%;
   }
 
   @include desktop-media {
@@ -55,6 +58,15 @@
 .tBody {
   font-family: 'Circe';
   @include font(16px, 24px);
+
+  & td {
+    text-align: center;
+    padding: 6px 0;
+
+    @include desktop-media {
+      padding: 12px 0;
+    }
+  }
 }
 
 tr {
@@ -64,15 +76,6 @@ tr {
 
   @include desktop-media {
     padding: 0 30px;
-  }
-}
-
-td {
-  text-align: center;
-  padding: 6px 0;
-
-  @include desktop-media {
-    padding: 12px 0;
   }
 }
 
@@ -86,33 +89,3 @@ td {
     padding-top: 20px;
   }
 }
-
-// thead th {
-//   width: 33%;
-// }
-
-// th,
-// td {
-//   padding: 0 8px;
-// }
-
-// .tHead tr {
-//   padding: 16px 30px;
-// }
-
-// tr {
-//   display: flex;
-//   padding: 0 30px;
-//   justify-content: space-around;
-// }
-
-// th {
-//   width: 70px;
-
-//   text-align: center;
-// }
-
-// td {
-//   text-align: center;
-//   padding: 12px 0;
-// }

@@ -13,7 +13,7 @@ import Statistics from './Statistics/Statistics';
 import { useMediaQuery } from 'react-responsive';
 import CurrentPageMobile from 'pages/CurrencyPageMobile/CurrencyPageMobile';
 
-const HomePage = lazy(() => import('pages/HomePage/HomePage.js'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 
 const RegistrationPage = lazy(() =>
   import('pages/RegistrationPage/RegistrationPage.js')

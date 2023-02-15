@@ -7,8 +7,7 @@
   padding: 8px 32px;
   margin: 0 auto;
 
-  // background: $mainBgnColor;
-  background: tomato;
+  background: $mainBgnColor;
   border-radius: 30px;
 
   @include tablet-media {
@@ -33,7 +32,7 @@
 
 .balance {
   @include font(30px, 45px);
-  // font-family: 'Poppins';
+  font-family: 'Poppins-bold';
   // font-style: normal;
   // font-weight: 400;
   // font-size: 30px;

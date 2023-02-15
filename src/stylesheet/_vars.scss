@@ -32,3 +32,9 @@ $to-desktop: 1279px;
 /* Icons */
 $iconColor: #bdbdbd;
 $navIconsColor: #6e78e8;
+$activeIcon: #4a56e2;
+
+// Decor
+$decorLineShadow: -1px 0px 0px rgba(0, 0, 0, 0.05) inset,
+  1px 0px 0px rgba(255, 255, 255, 0.6);
+$backdropHeight: calc(100vh - 80px);

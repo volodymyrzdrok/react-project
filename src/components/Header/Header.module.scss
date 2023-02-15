@@ -22,10 +22,14 @@
 
 .text {
   font-family: 'Poppins-bold';
-  @include font(30px, 45px);
+  @include font(20px, 35px);
   // font-size: 30px;
   // line-height: 45px;
   color: $mainTextColor;
+
+  @include tablet-media {
+    @include font(30px, 45px);
+  }
 }
 
 .headerMenu {

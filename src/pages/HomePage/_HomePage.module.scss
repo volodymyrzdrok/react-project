@@ -1,10 +1,23 @@
 @import '../../index.scss';
 
-// .div {
-//   @include font(12px, 24px);
-//   font-family: 'Poppins-bold';
-//   color: $redTextColor;
-// }
+.background {
+  min-height: $backdropHeight;
+  background-color: $secondaryBgnColor;
+
+  @include tablet-media {
+    background-image: url('../../assets/images/ellipse-rose.png'),
+      url('../../assets/images/ellipse-blue.png');
+    background-position: left bottom, right top;
+    background-repeat: no-repeat, no-repeat;
+  }
+}
+
+.backdrop {
+  width: 100%;
+  min-height: $backdropHeight;
+
+  backdrop-filter: blur(25px);
+}
 
 .contentWrapper {
   @include centeredFlex();
@@ -16,7 +29,8 @@
 
   @include desktop-media {
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: start;
+    gap: 70px;
   }
 }
 
@@ -30,7 +44,11 @@
   }
 
   @include desktop-media {
+    min-height: $backdropHeight;
     display: block;
+    padding-right: 69px;
+    border-right: 1px solid #e7e5f2;
+    box-shadow: $decorLineShadow;
   }
 }
 

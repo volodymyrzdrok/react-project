@@ -16,6 +16,14 @@
   gap: 20px;
 }
 
+.active {
+  font-family: 'Poppins-bold';
+  & .navIcon {
+    fill: $activeIcon;
+    box-shadow: (0px 3px 10px rgba(74, 86, 226, 0.5));
+  }
+}
+
 .navIcon {
   fill: $navIconsColor;
 
