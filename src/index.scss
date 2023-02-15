@@ -1,7 +1,6 @@
 @import-normalize;
 @import './stylesheet/vars';
-
-// @import './pages/HomePage/_HomePage.module.scss';
+@import './components/ModalAddTransaction/ModalAddTransaction.module';
 
 html {
   scroll-behavior: smooth;
