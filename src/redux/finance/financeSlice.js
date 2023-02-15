@@ -1,4 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
+import {
+  getUserCurrent,
+  loginUser,
+  logoutUser,
+} from 'redux/session/sessionOperations';
 
 const defaultState = {
   transactions: [],
@@ -16,7 +21,18 @@ export const financeSlice = createSlice({
   name: 'finance',
   initialState: defaultState,
   reducers: {},
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    builder
+      .addCase(loginUser.fulfilled, (state, { payload }) => {
+        state.balance = payload.user.balance;
+      })
+      .addCase(logoutUser.fulfilled, (state, { payload }) => {
+        return (state = defaultState);
+      })
+      .addCase(getUserCurrent.fulfilled, (state, { payload }) => {
+        state.balance = payload.balance;
+      });
+  },
 });
 
 export const selectTransactions = state => state.finance.items;

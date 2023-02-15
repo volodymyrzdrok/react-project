@@ -1,0 +1,69 @@
+@import '../../index.scss';
+
+.header {
+  @include centeredFlex(space-between);
+  height: 60px;
+  background-color: $mainBgnColor;
+
+  @include tablet-media {
+    height: 80px;
+  }
+}
+
+.logoWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include tablet-media {
+    gap: 20px;
+  }
+}
+
+.text {
+  font-family: 'Poppins-bold';
+  @include font(20px, 35px);
+  // font-size: 30px;
+  // line-height: 45px;
+  color: $mainTextColor;
+
+  @include tablet-media {
+    @include font(30px, 45px);
+  }
+}
+
+.headerMenu {
+  display: flex;
+  gap: 8px;
+
+  font-family: 'Circe';
+  @include font(18, 27);
+  // font-weight: 400;
+  // font-size: 18px;
+  // line-height: 27px;
+  text-align: right;
+
+  color: $headerTextColor;
+
+  @include tablet-media {
+    gap: 12px;
+  }
+}
+.email {
+  text-transform: capitalize;
+}
+.logoutBlock {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+
+  @include tablet-media {
+    padding-left: 12px;
+    border-left: 1px solid #bdbdbd;
+  }
+}
+
+.logoutIcon {
+  fill: $iconColor;
+}
