@@ -22,7 +22,6 @@ export const registerUser = createAsyncThunk(
       });
       setAuthHeader(response.data.token);
 
-      // console.log('response.data :', response.data);
       return response.data;
     } catch (err) {
       console.log(err.message);
@@ -41,7 +40,6 @@ export const loginUser = createAsyncThunk(
       });
       setAuthHeader(response.data.token);
 
-      // console.log('response.data :', response.data);
       return response.data;
     } catch (err) {
       console.log(err.message);
@@ -63,7 +61,6 @@ export const logoutUser = createAsyncThunk(
       setAuthHeader(idToken);
       const response = await axios.delete('/api/auth/sign-out');
 
-      // console.log('response.data :', response);
       clearAuthHeader(idToken);
 
       return response.data;
