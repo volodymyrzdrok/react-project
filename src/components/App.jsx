@@ -36,6 +36,7 @@ export const App = () => {
           <Route index element={<Navigate to={routes.dashboard} />} />
           <Route path={routes.dashboard} element={<Dashboard />} />
           <Route path={routes.statistics} element={<Statistics />} />
+          <Route path={routes.statistics} element={<Statistics />} />
 
           <Route
             path={routes.currency}

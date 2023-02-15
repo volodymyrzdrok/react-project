@@ -1,0 +1,286 @@
+@import "../../index.scss";
+
+.mobailTrList {
+  color: inherit;
+  width: 280px;
+}
+
+.mobailTrItem {
+  width: 280px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #fff;
+  margin-bottom: 10px;
+  display: flex;
+  @include mobile-only-media {
+    width: 400px;
+  }
+  &_INCOME {
+   
+    &::before {
+      content: "";
+      width: 5px;
+      background-color: $accentBgnColor;
+    }
+  }
+  &_EXPENSE {
+  
+    &::before {
+      content: "";
+      width: 5px;
+      background-color: $redBgnColor;
+    }
+  }
+}
+
+.mobailTrItem__list {
+  flex-grow: 1;
+  border-radius: 10px;
+  border-left: 5px solid $accentBgnColor;
+  background-color: $secondaryTextColor;
+}
+
+.mobailTrItem__row {
+  height: 47px;
+  padding-left: 15px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #DCDCDF;
+  
+
+  &:last-child {
+    border-bottom: 1px solid transparent;
+    margin-bottom: 8px;
+}
+}
+
+.mobailTrItem__cell_value {
+  font-weight: 400;
+  font-size: 16px;
+  &_INCOME {
+  
+    color: $accentBgnColor;
+  }
+  &_EXPENSE {
+   
+    color: $redBgnColor;
+  }
+}
+
+.mobailTrItem__cell {
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.47;
+}
+
+
+.tableTrList {
+  @include tablet-media {
+    width: 704px;
+  }
+  @include desktop-media{
+    width: 715px;
+  }
+}
+
+.table {
+  border-radius: 30px;
+  height: 58px;
+}
+
+
+.tableHeader {
+    text-align: left;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 1.47;
+    padding-left: 10px;
+    &:nth-child(1) {
+      padding-left: 20px;
+      width: 100px;
+    }
+    &:last-child {
+      padding-right: 20px;
+      text-align: right;
+      width: 110px;
+    }
+    @include tablet-media {
+      &:nth-child(2) {
+        width: 74px;
+      }
+      &:nth-child(3) {
+        width: 146px;
+      }
+      &:nth-child(4) {
+        width: 99px;
+      }
+      &:nth-child(5) {
+        width: 85px;
+        text-align: right;
+      }
+    }
+    @include desktop-media {
+      &:nth-child(2) {
+        width: 74px;
+      }
+      &:nth-child(3) {
+        width: 146px;
+      }
+      &:nth-child(4) {
+        width: 110px;
+      }
+      &:nth-child(5) {
+        width: 85px;
+        text-align: right;
+      }
+    }
+  }
+
+.tableScrollBox::-webkit-scrollbar-track {
+
+  background-color: transparent;
+  border-radius: 2px;
+}
+
+.tableScrollBox::-webkit-scrollbar {
+  width: 10px;
+  background-color: transparent;
+}
+
+.tableScrollBox::-webkit-scrollbar-thumb {
+  background-color: transparent;
+  border: 2px solid #DCDCDF;
+  border-radius: 5px;
+}
+
+.tableScrollBox::-webkit-scrollbar-thumb:hover {
+  background: #DCDCDF;
+}
+
+.tableScrollBox {
+  overflow-y: scroll;
+  @include tablet-media {
+    max-height: 45vh;
+  }
+
+  @include desktop-media {
+    max-height: 65vh;
+  }
+}
+
+.dataTable {
+    
+}
+
+.tableBody {
+  border-collapse: collapse;
+  
+}
+
+.tableRow {
+  height: 54px;
+  box-shadow: 0px 1px 0px #DCDCDF;
+}
+
+.tableData {
+  text-align: left;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.47;
+  padding-left: 10px;
+  &:nth-child(1) {
+    padding-left: 20px;
+    width: 100px;
+  }
+  &:last-child {
+    padding-right: 10px;
+    padding-left: 8px;
+    text-align: right;
+    width: 67px;
+  }
+  &_INCOME {
+  
+    color: $accentBgnColor;
+    text-align: right;
+    width: 95px;
+    padding-left: 10px;
+  }
+
+  &_EXPENSE {
+    padding-left: 10px;
+    color: $redBgnColor;
+    text-align: right;
+    width: 95px;
+  }
+  @include tablet-media {
+    &:nth-child(2) {
+        width: 74px;
+      }
+      &:nth-child(3) {
+        width: 146px;
+      }
+      &:nth-child(4) {
+        width: 110px;
+      }
+      &:nth-child(5) {
+          width: 85px;
+        }
+      &:nth-child(6) {
+         width: 20px;
+      }
+    }
+
+  @include desktop-media {
+    &:nth-child(2) {
+      width: 74px;
+    }
+    &:nth-child(3) {
+      width: 146px;
+    }
+    &:nth-child(4) {
+      width: 110px;
+    }
+    &:nth-child(5) {
+        width: 85px;
+      }
+    &:nth-child(6) {
+       width: 20px;
+    }
+  }
+}
+
+.button__delete{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 4px 12px;
+    gap: 2px;
+
+    width: 67px;
+    height: 26px;
+
+    background: #24CCA7;
+    border-radius: 18px;
+    border-color: rgba(0,0,0,0);
+
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+    
+    color: #FFFFFF;
+    
+}
+
+.buttonSvg{
+    
+}
+
+.mobileTrItem__edit{
+    display: flex;
+}
