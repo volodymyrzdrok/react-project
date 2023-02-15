@@ -7,6 +7,8 @@ import Navigation from 'components/Navigation/Navigation';
 
 import s from './_HomePage.module.scss';
 import { useMediaQuery } from 'react-responsive';
+import { Suspense } from 'react';
+import Loader from 'components/Loader/Loader';
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
@@ -36,7 +38,9 @@ const HomePage = () => {
               </div>
 
               <div>
-                <Outlet />
+                <Suspense fallback={<Loader />}>
+                  <Outlet />
+                </Suspense>
               </div>
             </div>
           </div>
