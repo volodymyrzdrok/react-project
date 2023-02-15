@@ -6,8 +6,6 @@ import { ToastContainer, toast } from 'react-toastify';
 import { settingAlert } from 'utils/settingAlert';
 
 const RegistrationPage = () => {
-  // 1111111z@gmail.com
-
   const dispatch = useDispatch();
   const errorAuth = useSelector(selectAuthError);
 

@@ -6,6 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import { PersistGate } from 'redux-persist/integration/react';
+// import Loader from 'components/Loader/Loader';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <BrowserRouter basename="/react-project">
