@@ -13,7 +13,7 @@ import { useMediaQuery } from 'react-responsive';
 import CurrentPageMobile from 'pages/CurrencyPageMobile/CurrencyPageMobile';
 import { getUserCurrent } from 'redux/session/sessionOperations.js';
 
-const HomePage = lazy(() => import('pages/HomePage/HomePage.js'));
+const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 
 const RegistrationPage = lazy(() =>
   import('pages/RegistrationPage/RegistrationPage.js')

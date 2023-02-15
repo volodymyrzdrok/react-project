@@ -4,6 +4,9 @@
 @import './vars';
 @import './mixins';
 
+* {
+  box-sizing: border-box;
+}
 html {
   scroll-behavior: smooth;
 }

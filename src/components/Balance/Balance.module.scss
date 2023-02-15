@@ -1,0 +1,41 @@
+@import '../../index.scss';
+
+.wrapper {
+  box-sizing: border-box;
+
+  width: 280px;
+  padding: 8px 32px;
+  margin: 0 auto;
+
+  background: $mainBgnColor;
+  border-radius: 30px;
+
+  @include tablet-media {
+    width: 335px;
+    padding: 8px 40px;
+    margin: 0;
+  }
+
+  @include desktop-media {
+    width: 395px;
+  }
+}
+
+.title {
+  font-family: 'Circe';
+  // font-size: 12px;
+  // line-height: 18px;
+  @include font(12px, 18px);
+  text-transform: uppercase;
+  color: $balanceTextColor;
+}
+
+.balance {
+  @include font(30px, 45px);
+  font-family: 'Poppins-bold';
+  // font-style: normal;
+  // font-weight: 400;
+  // font-size: 30px;
+  // line-height: 45px;
+  color: $mainTextColor;
+}

@@ -1,0 +1,91 @@
+@import '../../index.scss';
+
+.tWrapper {
+  width: 280px;
+  height: 175px;
+
+  border-radius: 30px;
+
+  background-color: #4a56e2;
+  background-image: url('../../assets/images/tableDecor.png');
+  background-repeat: no-repeat;
+  background-position: 0% 100%;
+  background-size: 280px;
+
+  overflow: hidden;
+
+  @include tablet-media {
+    width: 336px;
+    height: 182px;
+    background-size: 100%;
+    background-position: 0 105%;
+  }
+
+  @include desktop-media {
+    width: 395px;
+    height: 330px;
+    background-position: bottom;
+  }
+}
+
+.table {
+  color: $secondaryTextColor;
+
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tHead {
+  font-family: 'Circe-bold';
+  @include font(18px, 27px);
+
+  background-color: #6e78e8;
+
+  & > tr {
+    padding: 12px 15px;
+  }
+  & th {
+    width: 33%;
+  }
+
+  @include desktop-media {
+    & > tr {
+      padding: 16px 30px;
+    }
+  }
+}
+
+.tBody {
+  font-family: 'Circe';
+  @include font(16px, 24px);
+
+  & td {
+    text-align: center;
+    padding: 6px 0;
+
+    @include desktop-media {
+      padding: 12px 0;
+    }
+  }
+}
+
+tr {
+  display: flex;
+  padding: 0 10px;
+  justify-content: space-around;
+
+  @include desktop-media {
+    padding: 0 30px;
+  }
+}
+
+.firstLine {
+  padding-top: 12px;
+
+  @include tablet-media {
+    padding-top: 16px;
+  }
+  @include desktop-media {
+    padding-top: 20px;
+  }
+}
