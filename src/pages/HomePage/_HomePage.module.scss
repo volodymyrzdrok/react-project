@@ -35,6 +35,7 @@
 }
 
 .sidebarWrapper {
+  box-sizing: border-box;
   padding-top: 12px;
 
   @include tablet-media {
