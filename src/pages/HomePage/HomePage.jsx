@@ -9,6 +9,7 @@ import s from './_HomePage.module.scss';
 import { useMediaQuery } from 'react-responsive';
 import { Suspense } from 'react';
 import Loader from 'components/Loader/Loader';
+import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
@@ -46,6 +47,7 @@ const HomePage = () => {
           </div>
         </div>
       </div>
+      <ModalAddTransaction />
     </>
   );
 };
