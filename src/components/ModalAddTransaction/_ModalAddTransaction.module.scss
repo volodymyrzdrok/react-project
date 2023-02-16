@@ -1,0 +1,277 @@
+@import '../../index.scss';
+
+.backdrop {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background-color: $backdropColor;
+}
+
+.containerModal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  align-items: center;
+  background-color: $mainBgnColor;
+  display: flex;
+  flex-direction: column;
+  width: $mobile;
+  padding: 20px 20px 37px;
+
+  @include tablet-media {
+    width: 540px;
+    padding: 40px 73px;
+    border-radius: 20px;
+  }
+}
+
+.closeBtn {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  outline: none;
+  border: none;
+  background-color: transparent;
+  padding: 0;
+
+  &:hover .icon,
+  &:focus .icon {
+    fill: $redBgnColor;
+    stroke: $redBgnColor;
+    transition: $animation;
+  }
+}
+
+.icon {
+  fill: $mainTextColor;
+  stroke: $mainTextColor;
+}
+
+.title {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  @include font(24px, 36px);
+  color: $mainTextColor;
+  margin-bottom: 40px;
+}
+
+.swichWrap {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 40px;
+}
+
+.toggleWrap {
+  margin: 0;
+}
+
+.transaction {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 700;
+  @include font(16px, 24px);
+
+  color: $swichTextColor;
+}
+
+.incomeAactive {
+  composes: transaction;
+  color: $accentTextColor;
+}
+
+.expenseActive {
+  composes: transaction;
+  color: $redTextColor;
+}
+
+.select {
+  width: 100%;
+  height: 32px;
+  margin-bottom: 40px;
+}
+
+.custom-select {
+  &__control {
+    background-color: transparent !important;
+    border: none !important;
+    border-radius: 0 !important;
+    border-bottom: 1px solid $placeholderColor !important;
+    margin-bottom: 1px !important;
+    cursor: pointer !important;
+  }
+
+  &__value-container {
+    font-family: 'Circe' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    color: $mainTextColor !important;
+    padding-left: 20px !important;
+  }
+
+  &__indicator-separator {
+    display: none !important;
+  }
+
+  &__indicator {
+    color: $mainTextColor !important;
+  }
+
+  &__menu {
+    font-family: 'Circe' !important;
+    font-style: normal !important;
+    font-weight: 400 !important;
+    font-size: 18px !important;
+    line-height: 1.5 !important;
+    border-radius: 20px !important;
+    color: $mainTextColor !important;
+    box-shadow: $boxShadowDropdown !important;
+    // backdrop-filter: blur(25px) !important;
+    margin: 0 !important;
+    overflow: hidden !important;
+  }
+
+  &__option {
+    cursor: pointer !important;
+    background-color: #e0dfdf !important;
+    // backdrop-filter: blur(25px) !important;
+
+    &:hover {
+      color: $redTextColor !important;
+      background-color: $mainBgnColor !important;
+    }
+
+    &--is-selected {
+      color: $redTextColor !important;
+      background-color: $mainBgnColor !important;
+    }
+  }
+}
+
+.inputWrap {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-bottom: 40px;
+
+  @include tablet-media {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 0;
+  }
+}
+
+.label {
+  margin-bottom: 40px;
+  width: 100%;
+
+  @include tablet-media {
+    width: 180px;
+  }
+}
+
+.input {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  @include font(18px, 27px);
+
+  outline: none;
+  border: none;
+  border-bottom: 1px solid $placeholderColor;
+  color: $mainTextColor;
+  width: 100%;
+  height: 32px;
+  padding-left: 20px;
+
+  &::placeholder {
+    color: $placeholderColor;
+
+    @include tablet-media {
+      text-align: center;
+      padding-left: 0;
+    }
+  }
+
+  @include tablet-media {
+    text-align: center;
+    width: 180px;
+    padding-left: 0;
+  }
+}
+
+.comment {
+  composes: label;
+
+  @include tablet-media {
+    width: 100%;
+  }
+}
+
+.commentInput {
+  composes: input;
+
+  &::placeholder {
+    @include tablet-media {
+      text-align: left;
+    }
+  }
+
+  @include tablet-media {
+    text-align: left;
+    width: 100%;
+    padding-left: 8px;
+  }
+}
+
+.mainBtn {
+  display: block;
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  @include font(18px, 27px);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: $secondaryTextColor;
+  background-color: $accentBgnColor;
+  outline: none;
+  border: none;
+  border-radius: 20px;
+  width: 280px;
+  height: 50px;
+  margin-bottom: 20px;
+
+  @include tablet-media {
+    width: 300px;
+  }
+
+  &:hover,
+  &:focus {
+    background-color: darken($accentBgnColor, 5%);
+    transition: $animation;
+  }
+}
+
+.secondaryBtn {
+  composes: mainBtn;
+  color: $blueTextColor;
+  background-color: transparent;
+  border: 1px solid $blueBgnColor;
+
+  &:hover,
+  &:focus {
+    background-color: lighten($blueBgnColor, 30%);
+    transition: $animation;
+  }
+
+  @include tablet-media {
+    width: 300px;
+  }
+}
