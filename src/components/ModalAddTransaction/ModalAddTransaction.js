@@ -169,7 +169,7 @@ const ModalAddTransaction = () => {
             placeholder="Select a category"
             // onChange={formik.handleChange}
             onChange={e => {
-              console.log('e.value :', e.value);
+              // console.log('e.value :', e.value);
               formik.setFieldValue('categoryName', e.value);
             }}
             value={formik.values.categoryName}
