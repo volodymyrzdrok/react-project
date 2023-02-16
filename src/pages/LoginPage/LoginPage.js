@@ -28,13 +28,14 @@ const LoginPage = () => {
         <div className={s.backdrop}></div>
         <div className="container">
           <div className={s.contentWrapper}>
-            <div className={s.imgWrapper}>
+            <div className={s.illustrationWrapper}>
               <picture className={s.mainImg}>
                 <source media="(min-width: 1280px)" srcSet={logImgDesktop} />
                 <source media="(min-width: 768px)" srcSet={logImgTablet} />
 
                 <img src={logImgTablet} alt="wallet" />
               </picture>
+              <h2 className={s.illustrationText}>Finance App</h2>
             </div>
 
             <div className={s.formWrapper}>

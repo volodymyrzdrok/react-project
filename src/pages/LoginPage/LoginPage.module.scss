@@ -1,10 +1,10 @@
 @import '../../index.scss';
 
 .background {
-  position: relative;
+  // position: relative;
   min-height: 100vh;
   background-color: #ffffff;
-  z-index: -3;
+  // z-index: -3;
 
   @include tablet-media {
     background-image: url('../../assets/images/ellipse-rose.png'),
@@ -19,16 +19,19 @@
   @include desktop-media {
     position: absolute;
     right: 0;
-    z-index: -1;
+    // z-index: -1;
     width: 57%;
     min-height: 100vh;
     background: rgba(255, 255, 255, 0.4);
-
     backdrop-filter: blur(25px);
   }
 }
 
 .contentWrapper {
+  position: relative;
+
+  padding-top: 40px;
+
   @include tablet-only-media {
     width: 533px;
     margin: 0 auto;
@@ -41,28 +44,35 @@
     padding-top: 60px;
   }
   @include desktop-media {
-    padding-top: 140px;
+    padding-top: 80px;
     flex-direction: row;
   }
 }
 
-.imgWrapper {
-  //   @include tablet-media {
-  //     display: flex;
-  //     flex-direction: column;
-  //   }
-  @include desktop-media {
+.illustrationWrapper {
+  display: none;
+  @include tablet-media {
+    display: flex;
+    gap: 40px;
+    flex-direction: row;
     align-items: center;
+  }
+  @include desktop-media {
+    gap: 30px;
+    flex-direction: column;
     align-self: center;
     flex-basis: 42%;
   }
 }
 
+.illustrationText {
+  font-family: 'Poppins';
+  @include font(30px, 45px);
+  color: #000000;
+}
+
 .formWrapper {
-  //     @include tablet-media {
-  //     display: flex;
-  //     flex-direction: column;
-  //   }
+  z-index: 5;
   @include desktop-media {
     align-items: center;
     align-self: center;
