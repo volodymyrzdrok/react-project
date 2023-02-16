@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Statistics = () => {
-  return <div> тут пончик</div>;
+  return <div><Table /></div>;
 };
 
 export default Statistics;
