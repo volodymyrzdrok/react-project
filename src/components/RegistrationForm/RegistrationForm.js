@@ -7,7 +7,8 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = values => {
-    const { email, username, password } = values;
+    const { email, firstName, password } = values;
+    const username = firstName;
     dispatch(registerUser({ email, username, password }));
   };
   return (
