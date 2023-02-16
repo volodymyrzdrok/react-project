@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetAuthError, selectAuthError } from 'redux/session/sessionSlice';
-import RegistrationExample from '../../EXAMPLE/RegistrationExample';
+// import RegistrationExample from '../../EXAMPLE/RegistrationExample';
 import { ToastContainer, toast } from 'react-toastify';
 import { settingAlert } from 'utils/settingAlert';
 import RegistrationForm from 'components/RegistrationForm/RegistrationForm';
@@ -19,8 +19,8 @@ const RegistrationPage = () => {
 
   return (
     <div>
-      <RegistrationForm />;
-      <RegistrationExample />
+      <RegistrationForm />
+      {/* <RegistrationExample /> */}
       <ToastContainer />
     </div>
   );

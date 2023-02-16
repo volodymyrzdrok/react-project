@@ -12,12 +12,11 @@
 .formContainer {
   max-width: 280px;
   background-color: #fff;
-  margin: 50px auto;
+  margin: 0 auto;
   @include tablet-media {
     min-width: 533px;
     padding: 40px 60px 60px 60px;
     border-radius: 20px;
-    border: 2px solid black;
   }
 
   //   @include desktop-media {

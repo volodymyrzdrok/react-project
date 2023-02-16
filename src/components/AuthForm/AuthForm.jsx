@@ -1,7 +1,6 @@
 import style from './AuthForm.module.scss';
 import { useFormik } from 'formik';
 import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
 import IconEmail from 'assets/icons/IconEmail/IconEmail';
 import IconPassword from 'assets/icons/IconPassword/IconPassword';
 import IconName from 'assets/icons/IconName/IconName';
@@ -10,6 +9,7 @@ import { LinearProgress } from '@mui/material';
 
 import wallet40 from '../../assets/images/Wallet40.png';
 import wallet30 from '../../assets/images/Wallet30.png';
+import { SigupLogSchema } from 'utils/validation';
 
 const theme = createTheme({
   palette: {
@@ -21,7 +21,6 @@ const theme = createTheme({
     MuiLinearProgress: {
       styleOverrides: {
         root: {
-          // backgroundColor: 'red',
           borderRadius: '20px',
         },
       },
@@ -50,13 +49,12 @@ const AuthForm = ({
             password: '',
           },
 
-    validationSchema: SignupSchema(authType),
+    validationSchema: SigupLogSchema(authType),
     onSubmit: values => {
       onSubmitFunc(values);
     },
   });
 
-  const { errors, touched } = formik;
   return (
     <div className={style.formContainer}>
       <div className={style.formTitleContainer}>
@@ -135,7 +133,6 @@ const AuthForm = ({
                 className={style.progressBar}
                 variant="determinate"
                 color="primary"
-                // value={progressValue}
                 value={50}
               />
             </ThemeProvider>
@@ -173,40 +170,5 @@ const AuthForm = ({
     </div>
   );
 };
-
-function SignupSchema(authType) {
-  const defaultValidate = {
-    email: Yup.string()
-      .min(2, 'Too Short!')
-      .max(50, 'Too Long!')
-      .matches(
-        '[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}$',
-        'must be a valid email'
-      )
-      .required(),
-    password: Yup.string().min(8, 'Too Short!').max(50, 'Too Long!').required(),
-  };
-
-  return Yup.object().shape(
-    authType === 'register'
-      ? {
-          firstName: Yup.string()
-            .min(2, 'Too Short!')
-            .max(50, 'Too Long!')
-            .matches(
-              "^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$",
-              'only letters!'
-            )
-            .required(),
-          confirmPwd: Yup.string()
-            .min(8, 'Too Short!')
-            .max(50, 'Too Long!')
-            .required(),
-
-          ...defaultValidate,
-        }
-      : defaultValidate
-  );
-}
 
 export default AuthForm;
