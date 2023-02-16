@@ -5,6 +5,7 @@ import { resetAuthError, selectAuthError } from 'redux/session/sessionSlice';
 
 import { ToastContainer, toast } from 'react-toastify';
 import { settingAlert } from 'utils/settingAlert';
+import LoginForm from 'components/LoginForm/LoginForm';
 
 const LoginPage = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const LoginPage = () => {
   }, [errorAuth, dispatch]);
   return (
     <div>
+      <LoginForm />;
       <LoginExample />
       <ToastContainer />
     </div>
