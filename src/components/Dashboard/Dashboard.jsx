@@ -90,7 +90,7 @@ const Dashboard = () => {
                             <button type="buttom" className={s.button__delete}>
                               Delete
                             </button>
-                            <a className={s.mobileTrItem__edit}>
+                            <a className={s.mobileTrItem__edit} href>
                               <svg
                                 width="12"
                                 height="12"
