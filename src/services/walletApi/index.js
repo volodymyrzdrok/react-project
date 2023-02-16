@@ -8,7 +8,5 @@ export async function getTransactionsSummary(month, year) {
     },
   });
 
-  console.log('transactions', data);
-
   return data;
 }
