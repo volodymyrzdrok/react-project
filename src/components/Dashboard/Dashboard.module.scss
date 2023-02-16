@@ -90,16 +90,6 @@
 
 }
 
-
-// .tableTrList {
-//   @include tablet-media {
-//     width: 704px;
-//   }
-//   @include desktop-media{
-//     width: 715px;
-//   }
-// }
-
 .table {
   border-radius: 30px;
   height: 58px;
@@ -329,3 +319,14 @@
   stroke:currentColor;
   
 }
+
+// .tableTrList{
+//   padding-top: 46px;
+//   // @include tablet-media {
+//   //   padding-top: 20px;
+//   // }
+
+//   // @include desktop-media {
+//   //   padding-top: 46px;
+//   // }
+// }
