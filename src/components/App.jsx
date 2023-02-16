@@ -19,7 +19,7 @@ const RegistrationPage = lazy(() =>
   import('pages/RegistrationPage/RegistrationPage.js')
 );
 const LoginPage = lazy(() => import('pages/LoginPage/LoginPage.js'));
-const Dashboard = lazy(() => import('./Dashboard/Dashboard.js'));
+const Dashboard = lazy(() => import('./Dashboard/Dashboard.jsx'));
 const Statistics = lazy(() => import('./Statistics/Statistics.js'));
 
 export const App = () => {
@@ -36,6 +36,7 @@ export const App = () => {
         <Route path={routes.home} element={<HomePage />}>
           <Route index element={<Navigate to={routes.dashboard} />} />
           <Route path={routes.dashboard} element={<Dashboard />} />
+          <Route path={routes.statistics} element={<Statistics />} />
           <Route path={routes.statistics} element={<Statistics />} />
 
           <Route
