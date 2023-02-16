@@ -88,12 +88,9 @@ const categoryId = [
 const ModalAddTransaction = () => {
   const [isChacked, setIsChacked] = useState(true);
   const [startDate, setStartDate] = useState(new Date());
-  // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9;
-  // .eyJzaWQiOiJhOTNmYjg5Zi0yZGE1LTQ4ZjktYWE1ZC0xMjVlNmExZDViNWYiLCJpYXQiOjE2NzY1Mzc0OTIsImV4cCI6MTAwMDAwMDE2NzY1Mzc0OTJ9
-  // .jU9HCDRYYkj7uUeqtTnm1TRyD5i - PoJ8fQeLYOkCLzs;
 
   const categoryIdObj = categoryId.reduce((acc, el) => {
-    acc[el.name] = el;
+    acc[el.name.toLowerCase()] = el;
 
     return acc;
   }, {});
@@ -112,7 +109,10 @@ const ModalAddTransaction = () => {
     // validationSchema: SigninSchema,
     onSubmit: values => {
       console.log('values :', values);
-      // console.log('id :', categoryIdObj[values.categoryId].id);
+      console.log(
+        'id==> ',
+        categoryIdObj[values.categoryName.toLowerCase()].id
+      );
     },
   });
 
@@ -167,12 +167,10 @@ const ModalAddTransaction = () => {
             className={s.select}
             name="categoryName"
             placeholder="Select a category"
-            // onChange={formik.handleChange}
             onChange={e => {
-              // console.log('e.value :', e.value);
               formik.setFieldValue('categoryName', e.value);
             }}
-            value={formik.values.categoryName}
+            // value={formik.values.categoryName}
           />
         )}
 
