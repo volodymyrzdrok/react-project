@@ -15,7 +15,6 @@ const HomePage = () => {
   return (
     <>
       <Header />
-
       <div className={s.background}>
         <div className={s.backdrop}>
           <div className="container">
