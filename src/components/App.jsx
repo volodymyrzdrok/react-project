@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import Loader from './Loader/Loader';
 // import PrivateRoute from './Routes/PrivateRoute';
 // import PublicRoute from './Routes/PublicRoute';
@@ -13,6 +13,7 @@ import { useMediaQuery } from 'react-responsive';
 import CurrentPageMobile from 'pages/CurrencyPageMobile/CurrencyPageMobile';
 import { getUserCurrent } from 'redux/session/sessionOperations.js';
 import { getCategoriesTransaction } from 'redux/finance/financeOperations.js';
+import { selectTransactions } from 'redux/finance/financeSlice.js';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 
@@ -25,8 +26,13 @@ const Statistics = lazy(() => import('./Statistics/Statistics.js'));
 
 export const App = () => {
   const isMobileOnly = useMediaQuery({ query: '(max-width: 767px)' });
+  const transactions = useSelector(selectTransactions);
 
   const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getUserCurrent());
+  }, [transactions, dispatch]);
+
   useEffect(() => {
     dispatch(getUserCurrent());
     dispatch(getCategoriesTransaction());

@@ -8,6 +8,7 @@ import {
   addTransaction,
   fetchAllTransactions,
   getCategoriesTransaction,
+  removeTransaction,
 } from './financeOperations';
 
 const defaultState = {
@@ -47,6 +48,11 @@ export const financeSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, { payload }) => {
         state.transactions = [payload, ...state.transactions];
       })
+      .addCase(removeTransaction.fulfilled, (state, { payload }) => {
+        const index = state.transactions.findIndex(c => c.id === payload);
+        console.log('index :', index);
+        state.transactions.splice(index, 1);
+      })
       .addMatcher(
         ({ type }) => {
           return type.endsWith('pending') && type.startsWith('trans');
@@ -70,18 +76,19 @@ export const financeSlice = createSlice({
         },
         (state, action) => {
           state.isLoading = false;
+          // console.log('action :', action);
           state.error = action.payload;
         }
       );
   },
 });
 
+export const selectFinancesBalance = state => state.finance.balance;
 export const selectTransactions = state => state.finance.transactions;
 // export const selectTransactionsSortedByCategory = state =>
 //   state.finance.transactionsSortedByCategory;
 export const selectFinanceIsLoading = state => state.finance.isLoading;
 export const selectFinanceErrorStatus = state => state.finance.error;
-export const selectFinancesBalance = state => state.finance.balance;
 export const selectCategoriesForId = state =>
   state.finance.categoriesTrans.reduce((acc, el) => {
     acc[el.id.toLowerCase()] = el;

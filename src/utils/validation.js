@@ -34,3 +34,13 @@ export const SigninSchema = Yup.object().shape({
     .max(12, 'TPassword must be 6-12 characters')
     .required(),
 });
+
+export const AddTransactionSchema = Yup.object().shape({
+  categoryName: Yup.string().required('Required'),
+
+  amount: Yup.number()
+    .typeError('only numbers')
+    .positive("amount can't start with a minus")
+    .integer(" can't include a decimal point")
+    .required('amount is required'),
+});

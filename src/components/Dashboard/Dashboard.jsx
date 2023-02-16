@@ -4,15 +4,17 @@ import IconSV from '../../assets/icons/symbol-defs.svg';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategoriesForId,
   selectFinanceIsLoading,
   selectTransactions,
 } from 'redux/finance/financeSlice';
 import Loader from 'components/Loader/Loader';
+import { removeTransaction } from 'redux/finance/financeOperations';
 
 const Dashboard = () => {
+  const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
   const categoriesTransForId = useSelector(selectCategoriesForId);
   const isLoading = useSelector(selectFinanceIsLoading);
@@ -103,7 +105,8 @@ const Dashboard = () => {
                             </li>
                             <li className={s.mobailTrItem__row}>
                               <button
-                                type="buttom"
+                                onClick={() => dispatch(removeTransaction(id))}
+                                type="button"
                                 className={s.button__delete}
                               >
                                 Delete
@@ -204,7 +207,10 @@ const Dashboard = () => {
                                 </td>
                                 <td className={s.tableData}>
                                   <button
-                                    type="buttom"
+                                    onClick={() =>
+                                      dispatch(removeTransaction(id))
+                                    }
+                                    type="button"
                                     className={s.button__delete}
                                   >
                                     Delete

@@ -16,6 +16,7 @@ import {
 import { useFormik } from 'formik';
 import { selectCategoriesTrans } from 'redux/finance/financeSlice';
 import { addTransaction } from 'redux/finance/financeOperations';
+import { AddTransactionSchema } from 'utils/validation';
 
 const options = [
   { value: 'Main expenses ', label: 'Main expenses' },
@@ -38,40 +39,35 @@ const ModalAddTransaction = () => {
 
   const formik = useFormik({
     initialValues: {
-      // 'про інком змінити !!!!! '
-      categoryName: 'Income',
+      categoryName: '',
       transactionDate: converdDate(startDate),
-      type: !isChacked ? 'INCOME' : 'EXPENSE',
       comment: '',
       amount: 0,
     },
-
-    // validationSchema: SigninSchema,
+    validationSchema: AddTransactionSchema,
     onSubmit: values => {
-      const { transactionDate, type, comment, amount, categoryName } = values;
+      const { transactionDate, comment, amount, categoryName } = values;
 
-      const categoryId = categoriesTrans[categoryName.toLowerCase()].id;
+      const type = !isChacked ? 'INCOME' : 'EXPENSE';
+
+      const categoryId =
+        type === 'EXPENSE'
+          ? categoriesTrans[categoryName.toLowerCase()].id
+          : categoriesTrans['income'].id;
+
       const newTransObj = {
         transactionDate,
         type,
         categoryId,
         comment,
-        amount,
+        amount: isChacked ? amount * -1 : amount,
       };
-      console.log('newTransObj :', newTransObj);
+
       dispatch(addTransaction(newTransObj));
     },
   });
 
-  // {
-  //   "transactionDate": "string",
-  //   "type": "INCOME",
-  //   "categoryId": "string",
-  //   "comment": "string",
-  //   "amount": 0
-  // }
-
-  // const { errors, touched } = formik;
+  const { errors, touched } = formik;
 
   const isMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
@@ -113,20 +109,27 @@ const ModalAddTransaction = () => {
         </div>
 
         {isChacked && (
-          <Select
-            options={options}
-            classNamePrefix="custom-select"
-            className={s.select}
-            name="categoryName"
-            placeholder="Select a category"
-            onChange={e => {
-              formik.setFieldValue('categoryName', e.value);
-            }}
-            // value={formik.values.categoryName}
-          />
+          <>
+            <p>
+              {errors.categoryName && touched.categoryName
+                ? errors.categoryName
+                : null}
+            </p>
+            <Select
+              options={options}
+              classNamePrefix="custom-select"
+              className={s.select}
+              name="categoryName"
+              placeholder="Select a category"
+              onChange={e => {
+                formik.setFieldValue('categoryName', e.value);
+              }}
+            />
+          </>
         )}
 
         <div className={s.inputWrap}>
+          <p> {errors.amount && touched.amount ? errors.amount : null}</p>
           <label className={s.label}>
             <input
               className={s.input}
