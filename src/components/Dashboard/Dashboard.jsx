@@ -4,7 +4,6 @@ import IconSV from '../../assets/icons/symbol-defs.svg';
 
 
 const Dashboard = () => {
-  // generate some random data for demonstration purposes
   const data = Array.from({ length: 15 }, () => ({
     id: Math.random().toString(36).substring(7),
     balanceAfter: Math.floor(Math.random() * 10000),
@@ -88,9 +87,9 @@ const Dashboard = () => {
                         <li className={s.mobailTrItem__row}>
                         <button type = "buttom" class={s.button__delete}>Delete</button>
                         <a className={s.mobileTrItem__edit}>
-                            <svg width="20" height="20" fill=''>
-            <use xlinkHref={`${IconSV}#icon-pencil`}/>
-            </svg>
+                            <svg width="12" height="12" fill="transparent" stroke="currentColor">
+                                <use href={`${IconSV}#icon-pencil`}/>
+                            </svg>
                           <p>
                         Edit
                             </p>
@@ -160,8 +159,8 @@ const Dashboard = () => {
                               {sum}
                             </td>
                             <td className={s.tableData}>                            
-                            <svg width="20" height="20">
-                                <use xlinkHref={`${IconSV}#icon-pencil`}/>
+                            <svg svg className={s.mysvg} width="13" height="21">
+                                <use href={`${IconSV}#icon-pencil`}/>
                             </svg>
                             </td>
                             <td className={s.tableData}><button type= "buttom" class={s.button__delete}>Delete</button>
