@@ -77,11 +77,4 @@ export const getUserCurrent = createAsyncThunk(
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-  // {
-  //   condition: (_, { getState }) => {
-  //     const { idToken } = getState().auth;
-  //     if (idToken) return false;
-  //     return Boolean(idToken);
-  //   },
-  // }
 );

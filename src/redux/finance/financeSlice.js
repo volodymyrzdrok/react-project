@@ -4,10 +4,16 @@ import {
   loginUser,
   logoutUser,
 } from 'redux/session/sessionOperations';
+import {
+  addTransaction,
+  fetchAllTransactions,
+  getCategoriesTransaction,
+} from './financeOperations';
 
 const defaultState = {
+  balance: 0,
   transactions: [],
-  transactionCategories: [],
+  categoriesTrans: [],
   // transactionsSortedByCategory: {
   //   sorted: [],
   //   income: 0,
@@ -15,7 +21,6 @@ const defaultState = {
   // },
   isLoading: false,
   error: null,
-  balance: 0,
 };
 
 export const financeSlice = createSlice({
@@ -32,16 +37,64 @@ export const financeSlice = createSlice({
       })
       .addCase(getUserCurrent.fulfilled, (state, { payload }) => {
         state.balance = payload.balance;
-      });
+      })
+      .addCase(getCategoriesTransaction.fulfilled, (state, { payload }) => {
+        state.categoriesTrans = payload;
+      })
+      .addCase(fetchAllTransactions.fulfilled, (state, { payload }) => {
+        state.transactions = payload;
+      })
+      .addCase(addTransaction.fulfilled, (state, { payload }) => {
+        state.transactions = [payload, ...state.transactions];
+      })
+      .addMatcher(
+        ({ type }) => {
+          return type.endsWith('pending') && type.startsWith('trans');
+        },
+        state => {
+          state.isLoading = true;
+        }
+      )
+      .addMatcher(
+        ({ type }) => {
+          return type.endsWith('fulfilled') && type.startsWith('trans');
+        },
+        state => {
+          state.error = null;
+          state.isLoading = false;
+        }
+      )
+      .addMatcher(
+        ({ type }) => {
+          return type.endsWith('rejected') && type.startsWith('trans');
+        },
+        (state, action) => {
+          state.isLoading = false;
+          state.error = action.payload;
+        }
+      );
   },
 });
 
-export const selectTransactions = state => state.finance.items;
+export const selectTransactions = state => state.finance.transactions;
 // export const selectTransactionsSortedByCategory = state =>
 //   state.finance.transactionsSortedByCategory;
 export const selectFinanceIsLoading = state => state.finance.isLoading;
 export const selectFinanceErrorStatus = state => state.finance.error;
 export const selectFinancesBalance = state => state.finance.balance;
+export const selectCategoriesForId = state =>
+  state.finance.categoriesTrans.reduce((acc, el) => {
+    acc[el.id.toLowerCase()] = el;
+
+    return acc;
+  }, {});
+
+export const selectCategoriesTrans = state =>
+  state.finance.categoriesTrans.reduce((acc, el) => {
+    acc[el.name.toLowerCase()] = el;
+
+    return acc;
+  }, {});
 
 export const finance = financeSlice.reducer;
 // export const {  } = financeSlice.actions;

@@ -12,6 +12,7 @@ import Layout from 'components/Layout/Layout';
 import { useMediaQuery } from 'react-responsive';
 import CurrentPageMobile from 'pages/CurrencyPageMobile/CurrencyPageMobile';
 import { getUserCurrent } from 'redux/session/sessionOperations.js';
+import { getCategoriesTransaction } from 'redux/finance/financeOperations.js';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 
@@ -28,6 +29,7 @@ export const App = () => {
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getUserCurrent());
+    dispatch(getCategoriesTransaction());
   }, [dispatch]);
 
   return (
