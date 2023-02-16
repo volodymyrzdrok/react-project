@@ -11,7 +11,11 @@ const defaultState = {
 export const globalSlice = createSlice({
   name: 'global',
   initialState: defaultState,
-  reducers: {},
+  reducers: {
+    toggleModalAddTrans(state, action) {
+      state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
+    },
+  },
   extraReducers: builder => {},
 });
 
@@ -22,4 +26,4 @@ export const selectGlobalIsLoading = state => state.global.isLoading;
 export const selectGlobalErrorStatus = state => state.global.error;
 
 export const global = globalSlice.reducer;
-// export const {  } = globalSlice.actions;
+export const { toggleModalAddTrans } = globalSlice.actions;
