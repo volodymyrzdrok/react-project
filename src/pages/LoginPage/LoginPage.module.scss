@@ -3,7 +3,7 @@
 .background {
   // position: relative;
   min-height: 100vh;
-  background-color: #ffffff;
+  background-color: $mainBgnColor;
   // z-index: -3;
 
   @include tablet-media {
@@ -22,7 +22,7 @@
     // z-index: -1;
     width: 57%;
     min-height: 100vh;
-    background: rgba(255, 255, 255, 0.4);
+    background: $backdropLightColor;
     backdrop-filter: blur(25px);
   }
 }
@@ -68,7 +68,7 @@
 .illustrationText {
   font-family: 'Poppins';
   @include font(30px, 45px);
-  color: #000000;
+  color: $mainTextColor;
 }
 
 .formWrapper {

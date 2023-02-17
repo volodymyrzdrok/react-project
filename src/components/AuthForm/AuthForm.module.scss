@@ -1,30 +1,19 @@
 @import '../../index.scss';
 
-.hello {
-}
-
 .progressBar {
   position: relative;
   top: 6px;
-  box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
 }
 
 .formContainer {
   max-width: 280px;
-  background-color: #fff;
+  background-color: $mainBgnColor;
   margin: 0 auto;
   @include tablet-media {
     min-width: 533px;
     padding: 40px 60px 60px 60px;
     border-radius: 20px;
   }
-
-  //   @include desktop-media {
-  //     width: 395px;
-  //   }
-}
-
-.logoIcon {
 }
 
 .form {
@@ -47,7 +36,7 @@
 .formTitle {
   font-family: 'Poppins-bold';
   @include font(30px, 45px);
-  color: #000000;
+  color: $mainTextColor;
   margin-left: 15px;
   @include tablet-media {
     margin-left: 20px;
@@ -80,7 +69,7 @@
   &::placeholder {
     font-family: 'Circe';
     @include font(18px, 27px);
-    color: #bdbdbd;
+    color: $placeholderColor;
   }
 }
 
@@ -104,34 +93,49 @@
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background-color: #24cca7;
-  color: #ffffff;
+  background-color: $accentBgnColor;
+  color: $secondaryTextColor;
   border-radius: 20px;
   border: none;
   width: 100%;
+  transition: background-color $animation, box-shadow $animation;
   padding: 13px;
   margin: 0 auto;
+
   @include tablet-media {
     width: 300px;
+  }
+  &:hover,
+  &:focus {
+    background-color: #1eecc0;
+    box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
   }
 }
 
 .subBtn {
+  display: block;
   font-family: 'Circe';
   @include font(18px, 27px);
   text-align: center;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  background-color: #ffffff;
-  color: #4a56e2;
+  background-color: $mainBgnColor;
+  color: $blueTextColor;
   border-radius: 20px;
-  border: 1px solid #4a56e2;
+  border: 1px solid $blueBgnColor;
   width: 100%;
+  transition: border $animation, box-shadow $animation, color $animation;
 
   padding: 13px;
   margin: 0 auto;
   margin-top: -12px;
   @include tablet-media {
     width: 300px;
+  }
+  &:hover,
+  &:focus {
+    border: 1px solid #343d9b;
+    box-shadow: 0px 1px 8px $blueBgnColor;
+    color: #343d9b;
   }
 }

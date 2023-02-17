@@ -7,19 +7,10 @@ const RegistrationForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = values => {
-    const { email, firstName, password } = values;
-    const username = firstName;
+    const { email, username, password } = values;
     dispatch(registerUser({ email, username, password }));
   };
-  return (
-    <AuthForm
-      authType="register"
-      buttonText="Register"
-      linkText="Log in"
-      linkRoute="/login"
-      onSubmitFunc={onSubmit}
-    />
-  );
+  return <AuthForm authType="register" onSubmitFunc={onSubmit} />;
 };
 
 export default RegistrationForm;

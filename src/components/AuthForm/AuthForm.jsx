@@ -4,37 +4,16 @@ import { Link } from 'react-router-dom';
 import IconEmail from 'assets/icons/IconEmail/IconEmail';
 import IconPassword from 'assets/icons/IconPassword/IconPassword';
 import IconName from 'assets/icons/IconName/IconName';
-import { ThemeProvider, createTheme } from '@mui/material/styles';
+import { ThemeProvider } from '@mui/material/styles';
 import { LinearProgress } from '@mui/material';
-
 import wallet40 from '../../assets/images/Wallet40.png';
 import wallet30 from '../../assets/images/Wallet30.png';
 import { SigupLogSchema } from 'utils/validation';
+import themeGreen from 'assets/themes/themeProgressBar';
+import { useEffect, useState } from 'react';
+import themeRed from 'assets/themes/themeProgressBarRed';
 
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: '#24CCA7',
-    },
-  },
-  components: {
-    MuiLinearProgress: {
-      styleOverrides: {
-        root: {
-          borderRadius: '20px',
-        },
-      },
-    },
-  },
-});
-
-const AuthForm = ({
-  buttonText,
-  linkText,
-  linkRoute,
-  onSubmitFunc,
-  authType,
-}) => {
+const AuthForm = ({ onSubmitFunc, authType }) => {
   const formik = useFormik({
     initialValues:
       authType === 'register'
@@ -42,7 +21,7 @@ const AuthForm = ({
             email: '',
             password: '',
             confirmPwd: '',
-            firstName: '',
+            username: '',
           }
         : {
             email: '',
@@ -54,6 +33,27 @@ const AuthForm = ({
       onSubmitFunc(values);
     },
   });
+
+  const [valueProgress, setValueProgress] = useState(0);
+  useEffect(() => {
+    if (formik.values.confirmPwd.length === 0) {
+      setValueProgress(0.01);
+    } else if (
+      formik.values.password === formik.values.confirmPwd &&
+      formik.values.password.length !== 0
+    ) {
+      setValueProgress(100);
+    } else if (
+      formik.values.password.startsWith(formik.values.confirmPwd) &&
+      formik.values.password.length !== 0
+    ) {
+      setValueProgress(
+        (formik.values.confirmPwd.length * 100) / formik.values.password.length
+      );
+    } else {
+      setValueProgress(0);
+    }
+  }, [valueProgress, formik.values.confirmPwd, formik.values.password]);
 
   return (
     <div className={style.formContainer}>
@@ -108,7 +108,7 @@ const AuthForm = ({
         </div>
 
         {authType === 'register' && (
-          <div className={style.hello}>
+          <div>
             <div className={style.formInputWrapper}>
               <input
                 className={style.input}
@@ -128,12 +128,12 @@ const AuthForm = ({
                 </span>
               ) : null}
             </div>
-            <ThemeProvider theme={theme}>
+            <ThemeProvider theme={valueProgress === 0 ? themeRed : themeGreen}>
               <LinearProgress
                 className={style.progressBar}
                 variant="determinate"
                 color="primary"
-                value={50}
+                value={valueProgress}
               />
             </ThemeProvider>
           </div>
@@ -143,28 +143,30 @@ const AuthForm = ({
           <div className={style.formInputWrapper}>
             <input
               className={style.input}
-              name="firstName"
+              name="username"
               type="text"
               placeholder="First name"
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.firstName}
+              value={formik.values.username}
             />
 
             <IconName className={style.formIcon} />
-            {formik.touched.firstName && formik.errors.firstName ? (
+            {formik.touched.username && formik.errors.username ? (
               <span className={style.formInputMistake}>
-                {formik.errors.firstName}
+                {formik.errors.username}
               </span>
             ) : null}
           </div>
         )}
 
         <button className={style.mainBtn} type="submit">
-          {buttonText}
+          {authType === 'register' ? 'Register' : 'Log in'}
         </button>
-        <Link className={style.subBtn} to={`${linkRoute}`}>
-          {linkText}
+        <Link to={authType === 'register' ? '/login' : '/register'}>
+          <button className={style.subBtn}>
+            {authType === 'register' ? 'Log in' : 'Register'}
+          </button>
         </Link>
       </form>
     </div>

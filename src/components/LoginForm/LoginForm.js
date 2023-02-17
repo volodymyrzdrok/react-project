@@ -11,15 +11,7 @@ const LoginForm = () => {
     dispatch(loginUser({ email, password }));
   };
 
-  return (
-    <AuthForm
-      authType="login"
-      buttonText="Log in"
-      linkText="Register"
-      linkRoute="/register"
-      onSubmitFunc={onSubmit}
-    />
-  );
+  return <AuthForm authType="login" onSubmitFunc={onSubmit} />;
 };
 
 export default LoginForm;
