@@ -35,12 +35,22 @@ export const SigninSchema = Yup.object().shape({
     .required(),
 });
 
-export const AddTransactionSchema = Yup.object().shape({
-  categoryName: Yup.string().required('Required'),
+export const AddTransactionSchema = isChacked => {
+  return isChacked
+    ? Yup.object().shape({
+        categoryName: Yup.string().required('Required'),
 
-  amount: Yup.number()
-    .typeError('only numbers')
-    .positive("amount can't start with a minus")
-    .integer(" can't include a decimal point")
-    .required('amount is required'),
-});
+        amount: Yup.number()
+          .typeError('only numbers')
+          .positive("amount can't start with a minus")
+          .integer(" can't include a decimal point")
+          .required('amount is required'),
+      })
+    : Yup.object().shape({
+        amount: Yup.number()
+          .typeError('only numbers')
+          .positive("amount can't start with a minus")
+          .integer(" can't include a decimal point")
+          .required('amount is required'),
+      });
+};

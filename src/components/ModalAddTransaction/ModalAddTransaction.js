@@ -44,7 +44,7 @@ const ModalAddTransaction = () => {
       comment: '',
       amount: 0,
     },
-    validationSchema: AddTransactionSchema,
+    validationSchema: AddTransactionSchema(isChacked),
     onSubmit: values => {
       const { transactionDate, comment, amount, categoryName } = values;
 

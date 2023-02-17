@@ -50,7 +50,7 @@ export const financeSlice = createSlice({
       })
       .addCase(removeTransaction.fulfilled, (state, { payload }) => {
         const index = state.transactions.findIndex(c => c.id === payload);
-        console.log('index :', index);
+
         state.transactions.splice(index, 1);
       })
       .addMatcher(
