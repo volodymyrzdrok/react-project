@@ -1,0 +1,46 @@
+@import '../../index.scss';
+
+.contentWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include tablet-media {
+    flex-direction: row;
+  }
+}
+
+.selectorsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include tablet-media {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.diagramBlock {
+  width: 280px;
+  height: 280px;
+
+  background-color: tomato;
+
+  @include tablet-media {
+    width: 336px;
+    height: 336px;
+  }
+
+  @include desktop-media {
+    width: 288px;
+    height: 288px;
+  }
+}
+
+.transactionsSummaryBlock {
+  display: flex;
+  flex-direction: column;
+
+  gap: 20px;
+}

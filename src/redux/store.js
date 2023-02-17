@@ -11,9 +11,10 @@ import { configureStore } from '@reduxjs/toolkit';
 import { session } from './session/sessionSlice';
 import { global } from './global/globalSlice';
 import { finance } from './finance/financeSlice';
+import { transactionsSummaryReducer } from './transactionsSummary/transactionsSummarySlice';
 
 export const store = configureStore({
-  reducer: { finance, session, global },
+  reducer: { finance, session, global, summary: transactionsSummaryReducer },
   middleware: getDefaultMiddleware =>
     getDefaultMiddleware({
       serializableCheck: {
