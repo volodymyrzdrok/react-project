@@ -150,6 +150,7 @@ const Dashboard = () => {
                   )
                 )}
               </ul>
+              
             )}
             {matches.medium && (
               <div className={s.tableTrList}>
@@ -259,6 +260,7 @@ const Dashboard = () => {
           </>
         )}
       </Media>
+      
     </>
   );
 };

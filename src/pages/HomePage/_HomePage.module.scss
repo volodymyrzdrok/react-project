@@ -20,7 +20,8 @@
 }
 
 .contentWrapper {
-  @include centeredFlex();
+  display: flex;
+  justify-content: center;
   flex-direction: column;
 
   @include tablet-media {
