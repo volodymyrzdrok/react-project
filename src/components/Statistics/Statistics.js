@@ -1,10 +1,10 @@
 import React from 'react';
 
-import DiagramTab from 'components/DiagramTab/DiagramTab';
 import s from './Statistics.module.scss';
 
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsStats } from 'redux/transactionsSummary/transactionsSummaryOperations';
+import Table from '../Table/Table';
 
 const Statistics = () => {
   const dispatch = useDispatch();
@@ -16,16 +16,22 @@ const Statistics = () => {
   const onClickY = () => {
     dispatch(getTransactionsStats({ month: 3, year: 2023 }));
   };
+
+  const { transactionsSummary } = useSelector(state => state.summary);
+
   return (
     <>
       <div className={s.contentWrapper}>
-        <div className={s.diagramBlock}>Diagram</div>
+        <div className={s.diagramBlock}>
+          Diagram
+          {/* <Chart /> */}
+        </div>
         <div className={s.transactionsSummaryBlock}>
           <div className={s.selectorsBlock}>
             <button onClick={onClickM}>February</button>
             <button onClick={onClickY}>March</button>
           </div>
-          <DiagramTab />
+          <Table {...transactionsSummary} />
         </div>
       </div>
     </>
