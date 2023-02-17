@@ -70,7 +70,7 @@ const ModalAddTransaction = ({
   const formik = useFormik({
     initialValues: !editModal
       ? {
-          categoryName: null,
+          categoryName: undefined,
           comment: '',
           amount: 0,
         }
