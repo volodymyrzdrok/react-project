@@ -39,7 +39,9 @@ export const SigupLogSchema = authType => {
 export const AddTransactionSchema = isChacked => {
   return isChacked
     ? Yup.object().shape({
-        categoryName: Yup.object().required('Required'),
+        categoryName: Yup.object('please, choose a category').required(
+          'Required'
+        ),
 
         amount: Yup.number()
           .typeError('only numbers')
