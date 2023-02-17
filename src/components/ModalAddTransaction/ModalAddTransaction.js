@@ -70,7 +70,7 @@ const ModalAddTransaction = ({
   const formik = useFormik({
     initialValues: !editModal
       ? {
-          categoryName: null,
+          categoryName: undefined,
           comment: '',
           amount: 0,
         }
@@ -80,7 +80,10 @@ const ModalAddTransaction = ({
             label: categNameFromData(),
           },
           comment: newObjTransaction.comment,
-          amount: newObjTransaction.amount,
+          amount:
+            newObjTransaction.amount > 0
+              ? newObjTransaction.amount
+              : newObjTransaction.amount * -1,
         },
 
     validationSchema: AddTransactionSchema(isChacked),
@@ -143,6 +146,7 @@ const ModalAddTransaction = ({
                     formik.resetForm();
                   }}
                   checked={isChacked}
+                  disabled={editModal}
                 />
               }
             />
@@ -169,6 +173,7 @@ const ModalAddTransaction = ({
               onChange={e => {
                 formik.setFieldValue('categoryName', e);
               }}
+              isDisabled={editModal}
             />
           </>
         )}
@@ -201,6 +206,7 @@ const ModalAddTransaction = ({
               name="transactionDate"
               showIcon
               selected={startDate}
+              disabled={editModal}
               onChange={date => {
                 setStartDate(date);
               }}

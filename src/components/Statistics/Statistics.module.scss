@@ -10,6 +10,15 @@
   }
 }
 
+.title {
+  @include font(30px, 45px);
+  margin-bottom: 8px;
+
+  @include tablet-media {
+    margin-bottom: 20px;
+  }
+}
+
 .selectorsBlock {
   display: flex;
   flex-direction: column;
@@ -24,8 +33,6 @@
 .diagramBlock {
   width: 280px;
   height: 280px;
-
-  background-color: tomato;
 
   @include tablet-media {
     width: 336px;
@@ -43,4 +50,8 @@
   flex-direction: column;
 
   gap: 20px;
+
+  @include tablet-only-media {
+    transform: translateY(-45px);
+  }
 }

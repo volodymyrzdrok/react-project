@@ -1,7 +1,12 @@
+import ModalLogout from 'components/ModalLogout/ModalLogout';
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useMediaQuery } from 'react-responsive';
-import { logoutUser } from 'redux/session/sessionOperations';
+import {
+  selectIsModalLogoutOpen,
+  toggleModalLogout,
+} from 'redux/global/globalSlice';
+// import { logoutUser } from 'redux/session/sessionOperations';
 import { selectUserName } from 'redux/session/sessionSlice';
 
 import sprite from '../../assets/icons/symbol-defs.svg';
@@ -9,11 +14,14 @@ import logo from '../../assets/images/logo.png';
 import s from './Header.module.scss';
 
 const Header = () => {
+  const isModalLogoutOpen = useSelector(selectIsModalLogoutOpen);
+
   const isMobileOnly = useMediaQuery({ query: '(max-width: 767px)' });
   const userName = useSelector(selectUserName);
   const dispatch = useDispatch();
+
   const onLogOut = () => {
-    dispatch(logoutUser());
+    dispatch(toggleModalLogout());
   };
   return (
     <header className="container">
@@ -32,6 +40,7 @@ const Header = () => {
             </svg>
           </div>
         </div>
+        {isModalLogoutOpen && <ModalLogout />}
       </div>
     </header>
   );

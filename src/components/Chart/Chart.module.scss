@@ -1,0 +1,15 @@
+@import '../../index.scss';
+
+.chartWrapper {
+  position: relative;
+}
+
+.total {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-family: 'Circe-bold';
+  @include font(18px, 27px);
+}

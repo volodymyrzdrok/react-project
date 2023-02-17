@@ -1,0 +1,95 @@
+@import '../../index.scss';
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: $backdropColor;
+}
+
+.modalContent {
+  outline: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  align-items: center;
+  background-color: $mainBgnColor;
+  display: flex;
+  flex-direction: column;
+  width: $mobile;
+  padding: 20px 20px 37px;
+
+  @include tablet-media {
+    width: 540px;
+    padding: 40px 73px;
+    border-radius: 20px;
+  }
+}
+.logoutImg {
+  width: 70%;
+  height: auto;
+  margin-bottom: 30px;
+}
+
+.logoutText {
+  font-family: 'Poppins';
+  font-style: normal;
+  font-weight: 400;
+  @include font(18px, 27px);
+  color: $mainTextColor;
+}
+
+.btnContainer {
+  display: flex;
+  gap: 30px;
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.logoutBtn {
+  background-color: $accentBgnColor;
+  color: $secondaryTextColor;
+  border: none;
+  border-radius: 20px;
+
+  font-family: 'Circe';
+  @include font(18px, 27px);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color $animation, box-shadow $animation;
+  padding: 13px 30px;
+
+  &:hover,
+  &:focus {
+    background-color: #1eecc0;
+    box-shadow: 0px 1px 8px rgba(36, 204, 167, 0.5);
+  }
+}
+
+.keepInBtn {
+  background-color: $mainBgnColor;
+  color: $blueTextColor;
+  border-radius: 20px;
+  border: 1px solid $blueBgnColor;
+
+  font-family: 'Circe';
+  @include font(18px, 27px);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: background-color $animation, box-shadow $animation;
+  padding: 13px 30px;
+
+  &:hover,
+  &:focus {
+    border: 1px solid #343d9b;
+    box-shadow: 0px 1px 8px $blueBgnColor;
+    color: #343d9b;
+  }
+}
