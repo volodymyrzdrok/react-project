@@ -64,6 +64,11 @@ const Statistics = () => {
         cutout: '70%',
       },
     ],
+    options: {
+      responsive: true,
+
+      maintainAspectRatio: false,
+    },
   };
 
   return (
