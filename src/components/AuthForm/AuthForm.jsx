@@ -36,6 +36,7 @@ const AuthForm = ({ onSubmitFunc, authType }) => {
 
   const [valueProgress, setValueProgress] = useState(0);
   useEffect(() => {
+    if (authType !== 'register') return;
     if (formik.values.confirmPwd.length === 0) {
       setValueProgress(0.01);
     } else if (
@@ -53,7 +54,12 @@ const AuthForm = ({ onSubmitFunc, authType }) => {
     } else {
       setValueProgress(0);
     }
-  }, [valueProgress, formik.values.confirmPwd, formik.values.password]);
+  }, [
+    valueProgress,
+    formik.values.confirmPwd,
+    formik.values.password,
+    authType,
+  ]);
 
   return (
     <div className={style.formContainer}>
