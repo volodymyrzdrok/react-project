@@ -30,13 +30,12 @@ export const App = () => {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserCurrent());
-  }, [transactions, dispatch]);
+    dispatch(getCategoriesTransaction());
+  }, [dispatch]);
 
   useEffect(() => {
     dispatch(getUserCurrent());
-    dispatch(getCategoriesTransaction());
-  }, [dispatch]);
+  }, [dispatch, transactions]);
 
   return (
     <Routes>
