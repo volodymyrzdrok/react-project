@@ -72,16 +72,10 @@ export const getUserCurrent = createAsyncThunk(
     try {
       setAuthHeader(idToken);
       const res = await axios.get('/api/users/current');
+      // console.log('response,data :', res.data);
       return res.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
   }
-  // {
-  //   condition: (_, { getState }) => {
-  //     const { idToken } = getState().auth;
-  //     if (idToken) return false;
-  //     return Boolean(idToken);
-  //   },
-  // }
 );

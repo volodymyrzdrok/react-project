@@ -5,6 +5,7 @@ import Table from '../Table/Table';
 
 const DiagramTab = () => {
   const { transactionsSummary } = useSelector(state => state.summary);
+  console.log(transactionsSummary);
 
   return (
     <div>

@@ -1,10 +1,9 @@
 import { createSlice } from '@reduxjs/toolkit';
-// import { persistReducer } from 'redux-persist';
-// import storage from 'redux-persist/lib/storage';
 
 const defaultState = {
   isModalLogoutOpen: false,
   isModalAddTransactionOpen: false,
+
   isLoading: false,
   error: null,
 };

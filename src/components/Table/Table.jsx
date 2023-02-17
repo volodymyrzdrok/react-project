@@ -1,15 +1,7 @@
 import React from 'react';
-
 import s from './Table.module.scss';
 
-function Table({ categoriesSummary, incomeSummary, expenseSummary }) {
-  // const { categoriesSummary, incomeSummary, expenseSummary } = transactions;
-  // const data = Array.from({ length: 12 }, () => ({
-  //   id: Math.random().toString(36).substring(7),
-  //   category: 'random',
-  //   sum: Math.floor(Math.random() * 100),
-  // }));
-
+function Table({ categoriesSummary, incomeSummary, expenseSummary, colors }) {
   return (
     <>
       {!categoriesSummary ? (
@@ -23,11 +15,11 @@ function Table({ categoriesSummary, incomeSummary, expenseSummary }) {
             </div>
             <div className={s.tableScrollBox}>
               <ul>
-                {categoriesSummary.map(({ name, total }) => (
+                {categoriesSummary.map(({ name, total }, index) => (
                   <li key={name} className={s.table__item}>
                     <span
                       className={s.table__color}
-                      style={{ backgroundColor: '#FFAEBC' }}
+                      style={{ backgroundColor: colors[index] }}
                     ></span>
                     <span className={s.table__name}>{name}</span>
                     <span className={s.table__total}>{Math.abs(total)}</span>

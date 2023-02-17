@@ -1,6 +1,7 @@
-@import "../../index.scss";
+@import '../../index.scss';
 
 .mobailTrList {
+  // position: relative;
   color: inherit;
   width: 280px;
 }
@@ -16,17 +17,15 @@
     width: 400px;
   }
   &_INCOME {
-   
     &::before {
-      content: "";
+      content: '';
       width: 5px;
       background-color: $accentBgnColor;
     }
   }
   &_EXPENSE {
-  
     &::before {
-      content: "";
+      content: '';
       width: 5px;
       background-color: $redBgnColor;
     }
@@ -47,13 +46,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 1px solid #DCDCDF;
-  
+  border-bottom: 1px solid #dcdcdf;
 
   &:last-child {
     border-bottom: 1px solid transparent;
     margin-bottom: 8px;
-}
+  }
 }
 
 .mobailTrItem__cell_value {
@@ -64,18 +62,18 @@
   text-align: right;
   &_INCOME {
     font-family: 'Circe';
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: right;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
     color: $accentBgnColor;
   }
   &_EXPENSE {
     font-family: 'Circe';
-  font-weight: 700;
-  font-size: 16px;
-  line-height: 24px;
-  text-align: right;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: right;
     color: $redBgnColor;
   }
 }
@@ -87,7 +85,6 @@
   line-height: 27px;
   letter-spacing: 0em;
   text-align: left;
-
 }
 
 .table {
@@ -95,63 +92,60 @@
   height: 58px;
   background-color: $mainBgnColor;
   padding-bottom: 2px;
-
 }
 
-
 .tableHeader {
-    font-family: 'Circe';
-    text-align: left;
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 1.47;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 16px;
-    padding-bottom: 15px;
-    &:nth-child(1) {
-      padding-left: 20px;
-      width: 130px;
+  font-family: 'Circe';
+  text-align: left;
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 1.47;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 16px;
+  padding-bottom: 15px;
+  &:nth-child(1) {
+    padding-left: 20px;
+    width: 130px;
+  }
+  &:last-child {
+    padding-right: 20px;
+    text-align: right;
+    width: 130px;
+  }
+  @include tablet-media {
+    &:nth-child(2) {
+      width: 84px;
     }
-    &:last-child {
-      padding-right: 20px;
+    &:nth-child(3) {
+      width: 156px;
+    }
+    &:nth-child(4) {
+      width: 109px;
+    }
+    &:nth-child(5) {
+      width: 95px;
       text-align: right;
-      width: 130px;
-    }
-    @include tablet-media {
-      &:nth-child(2) {
-        width: 84px;
-      }
-      &:nth-child(3) {
-        width: 156px;
-      }
-      &:nth-child(4) {
-        width: 109px;
-      }
-      &:nth-child(5) {
-        width: 95px;
-        text-align: right;
-      }
-    }
-    @include desktop-media {
-      &:nth-child(2) {
-        width: 84px;
-      }
-      &:nth-child(3) {
-        width: 156px;
-      }
-      &:nth-child(4) {
-        width: 120px;
-      }
-      &:nth-child(5) {
-        width: 95px;
-        text-align: right;
-      }
     }
   }
+  @include desktop-media {
+    &:nth-child(2) {
+      width: 84px;
+    }
+    &:nth-child(3) {
+      width: 156px;
+    }
+    &:nth-child(4) {
+      width: 120px;
+    }
+    &:nth-child(5) {
+      width: 95px;
+      text-align: right;
+    }
+  }
+}
 
 .tableScrollBox::-webkit-scrollbar-track {
-
   background-color: transparent;
   border-radius: 2px;
 }
@@ -183,17 +177,17 @@
 }
 
 // .dataTable {
-    
+// position: relative;
 // }
 
 .tableBody {
-  border-collapse: collapse;
-  
+  // border-collapse: collapse;
+  position: relative;
 }
 
 .tableRow {
   height: 54px;
-  box-shadow: 0px 1px 0px #DCDCDF;
+  box-shadow: 0px 1px 0px #dcdcdf;
 }
 
 .tableData {
@@ -236,21 +230,21 @@
   }
   @include tablet-media {
     &:nth-child(2) {
-        width: 84px;
-      }
-      &:nth-child(3) {
-        width: 156px;
-      }
-      &:nth-child(4) {
-        width: 109px;
-      }
-      &:nth-child(5) {
-          width: 95px;
-        }
-      &:nth-child(6) {
-        width: 35px;
-      }
+      width: 84px;
     }
+    &:nth-child(3) {
+      width: 156px;
+    }
+    &:nth-child(4) {
+      width: 109px;
+    }
+    &:nth-child(5) {
+      width: 95px;
+    }
+    &:nth-child(6) {
+      width: 35px;
+    }
+  }
 
   @include desktop-media {
     &:nth-child(2) {
@@ -263,46 +257,45 @@
       width: 120px;
     }
     &:nth-child(5) {
-        width: 95px;
-      }
+      width: 95px;
+    }
     &:nth-child(6) {
-       width: 50px;
-       text-align: right;
+      width: 50px;
+      text-align: right;
     }
   }
 }
 
-.button__delete{
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    padding: 4px 12px;
-    gap: 2px;
+.button__delete {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 4px 12px;
+  gap: 2px;
 
-    width: 67px;
-    height: 26px;
+  width: 67px;
+  height: 26px;
 
-    background: #24CCA7;
-    border-radius: 18px;
-    border-color: rgba(0,0,0,0);
+  background: #24cca7;
+  border-radius: 18px;
+  border-color: rgba(0, 0, 0, 0);
 
-    font-family: 'Circe';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 14px;
-    line-height: 21px;
-    text-align: center;
-    
-    color: #FFFFFF;
-    
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+
+  color: #ffffff;
 }
 
 // .buttonSvg{
-    
+
 // }
 
-.mobileTrItem__edit{
+.mobileTrItem__edit {
   width: 46px;
   justify-content: space-between;
   display: flex;
@@ -315,9 +308,9 @@
 }
 
 .mysvg {
+  cursor: pointer;
   fill: transparent;
-  stroke:currentColor;
-  
+  stroke: currentColor;
 }
 
 // .tableTrList{

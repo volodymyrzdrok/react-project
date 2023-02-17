@@ -6,7 +6,8 @@
 }
 
 .formContainer {
-  max-width: 280px;
+  // max-width: 280px;
+  max-width: 410px;
   background-color: $mainBgnColor;
   margin: 0 auto;
   @include tablet-media {
