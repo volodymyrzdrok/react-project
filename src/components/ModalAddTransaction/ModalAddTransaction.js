@@ -80,7 +80,10 @@ const ModalAddTransaction = ({
             label: categNameFromData(),
           },
           comment: newObjTransaction.comment,
-          amount: newObjTransaction.amount,
+          amount:
+            newObjTransaction.amount > 0
+              ? newObjTransaction.amount
+              : newObjTransaction.amount * -1,
         },
 
     validationSchema: AddTransactionSchema(isChacked),
