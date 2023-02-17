@@ -14,8 +14,14 @@ import {
   toggleModalAddTrans,
 } from 'redux/global/globalSlice';
 import { useFormik } from 'formik';
-import { selectCategoriesTrans } from 'redux/finance/financeSlice';
-import { addTransaction } from 'redux/finance/financeOperations';
+import {
+  selectCategoriesForId,
+  selectCategoriesTrans,
+} from 'redux/finance/financeSlice';
+import {
+  addTransaction,
+  editTransaction,
+} from 'redux/finance/financeOperations';
 import { AddTransactionSchema } from 'utils/validation';
 
 const options = [
@@ -31,51 +37,86 @@ const options = [
   { value: 'Entertainment', label: 'Entertainment' },
 ];
 
-const ModalAddTransaction = () => {
-  const categoriesTrans = useSelector(selectCategoriesTrans);
-  const [isChacked, setIsChacked] = useState(true);
-  const [startDate, setStartDate] = useState(new Date());
+const ModalAddTransaction = ({
+  editModal,
+  closeEditModal,
+  newObjTransaction,
+}) => {
   const dispatch = useDispatch();
+  const converNameFromId = useSelector(selectCategoriesForId);
+  const isModalAddTransactionOpen = useSelector(
+    selectIsModalAddTransactionOpen
+  );
+  const categoriesTrans = useSelector(selectCategoriesTrans);
+  const categNameFromData = () =>
+    converNameFromId[newObjTransaction.categoryId.toLowerCase()].name;
+
+  const isChackedDefault = editModal
+    ? newObjTransaction.type === 'INCOME'
+      ? false
+      : true
+    : true;
+
+  const [isChacked, setIsChacked] = useState(isChackedDefault);
+  const [startDate, setStartDate] = useState(() =>
+    !editModal ? new Date() : new Date(newObjTransaction.transactionDate)
+  );
+
+  const handleClose = () => {
+    closeEditModal(false);
+    dispatch(toggleModalAddTrans());
+  };
 
   const formik = useFormik({
-    initialValues: {
-      categoryName: '',
-      transactionDate: converdDate(startDate),
-      comment: '',
-      amount: 0,
-    },
+    initialValues: !editModal
+      ? {
+          categoryName: null,
+          comment: '',
+          amount: 0,
+        }
+      : {
+          categoryName: {
+            value: categNameFromData(),
+            label: categNameFromData(),
+          },
+          comment: newObjTransaction.comment,
+          amount: newObjTransaction.amount,
+        },
+
     validationSchema: AddTransactionSchema(isChacked),
     onSubmit: values => {
-      const { transactionDate, comment, amount, categoryName } = values;
-
+      const { comment, amount, categoryName } = values;
       const type = !isChacked ? 'INCOME' : 'EXPENSE';
-
+      const transactionDate = convertDate(startDate);
       const categoryId =
         type === 'EXPENSE'
-          ? categoriesTrans[categoryName.toLowerCase()].id
+          ? categoriesTrans[categoryName.value.toLowerCase().trim()].id
           : categoriesTrans['income'].id;
+      if (editModal) {
+        const editTransObj = {
+          id: newObjTransaction.id,
+          amount: isChacked ? amount * -1 : Number(amount),
+          comment,
+        };
+        dispatch(editTransaction(editTransObj));
+        handleClose();
+      } else {
+        const newTransObj = {
+          transactionDate,
+          type,
+          categoryId,
+          comment,
+          amount: isChacked ? amount * -1 : Number(amount),
+        };
 
-      const newTransObj = {
-        transactionDate,
-        type,
-        categoryId,
-        comment,
-        amount: isChacked ? amount * -1 : amount,
-      };
-
-      dispatch(addTransaction(newTransObj));
+        dispatch(addTransaction(newTransObj));
+        handleClose();
+      }
     },
   });
 
   const { errors, touched } = formik;
-
   const isMobile = useMediaQuery({ query: '(min-width: 768px)' });
-
-  const isModalAddTransactionOpen = useSelector(
-    selectIsModalAddTransactionOpen
-  );
-
-  const handleClose = () => dispatch(toggleModalAddTrans());
 
   return (
     <Modal open={isModalAddTransactionOpen} onClose={handleClose}>
@@ -87,7 +128,7 @@ const ModalAddTransaction = () => {
             </svg>
           </button>
         )}
-        <h2 className={s.title}>Add transaction</h2>
+        <h2 className={s.title}>{editModal ? 'Edit' : 'Add'} transaction</h2>
 
         <div className={s.swichWrap}>
           <p className={isChacked ? s.transaction : s.incomeAactive}>Income</p>
@@ -97,7 +138,10 @@ const ModalAddTransaction = () => {
               control={
                 <MaterialUISwitch
                   sx={{ m: 1, overflow: 'visible' }}
-                  onChange={() => setIsChacked(!isChacked)}
+                  onChange={() => {
+                    setIsChacked(!isChacked);
+                    formik.resetForm();
+                  }}
                   checked={isChacked}
                 />
               }
@@ -121,8 +165,9 @@ const ModalAddTransaction = () => {
               className={s.select}
               name="categoryName"
               placeholder="Select a category"
+              value={formik.values.categoryName}
               onChange={e => {
-                formik.setFieldValue('categoryName', e.value);
+                formik.setFieldValue('categoryName', e);
               }}
             />
           </>
@@ -136,7 +181,16 @@ const ModalAddTransaction = () => {
               type="number"
               name="amount"
               placeholder="0.00"
-              onChange={formik.handleChange}
+              // onChange={formik.handleChange}
+              onChange={e => {
+                // console.log('e.target.value :', e.target.value);
+                formik.setFieldValue(
+                  'amount',
+                  e.target.value[0] === '0'
+                    ? e.target.value.slice(1)
+                    : e.target.value
+                );
+              }}
               value={formik.values.amount}
             />
           </label>
@@ -147,7 +201,9 @@ const ModalAddTransaction = () => {
               name="transactionDate"
               showIcon
               selected={startDate}
-              onChange={date => setStartDate(date)}
+              onChange={date => {
+                setStartDate(date);
+              }}
             />
           </label>
         </div>
@@ -164,7 +220,7 @@ const ModalAddTransaction = () => {
           />
         </label>
         <button className={s.mainBtn} type="submit">
-          add
+          {editModal ? 'Edit' : 'Add'}
         </button>
         <button className={s.secondaryBtn} type="button">
           cancel
@@ -176,7 +232,7 @@ const ModalAddTransaction = () => {
 
 export default ModalAddTransaction;
 
-function converdDate(date) {
+function convertDate(date) {
   const year = date.getFullYear();
   const month = String(date.getMonth() + 1).padStart(2, '0');
   const day = String(date.getDate()).padStart(2, '0');

@@ -38,7 +38,7 @@ export const SigninSchema = Yup.object().shape({
 export const AddTransactionSchema = isChacked => {
   return isChacked
     ? Yup.object().shape({
-        categoryName: Yup.string().required('Required'),
+        categoryName: Yup.object().required('Required'),
 
         amount: Yup.number()
           .typeError('only numbers')

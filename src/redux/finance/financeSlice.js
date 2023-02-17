@@ -6,6 +6,7 @@ import {
 } from 'redux/session/sessionOperations';
 import {
   addTransaction,
+  editTransaction,
   fetchAllTransactions,
   getCategoriesTransaction,
   removeTransaction,
@@ -50,8 +51,11 @@ export const financeSlice = createSlice({
       })
       .addCase(removeTransaction.fulfilled, (state, { payload }) => {
         const index = state.transactions.findIndex(c => c.id === payload);
-
         state.transactions.splice(index, 1);
+      })
+      .addCase(editTransaction.fulfilled, (state, { payload }) => {
+        const index = state.transactions.findIndex(c => c.id === payload.id);
+        state.transactions.splice(index, 1, payload);
       })
       .addMatcher(
         ({ type }) => {
@@ -91,14 +95,14 @@ export const selectFinanceIsLoading = state => state.finance.isLoading;
 export const selectFinanceErrorStatus = state => state.finance.error;
 export const selectCategoriesForId = state =>
   state.finance.categoriesTrans.reduce((acc, el) => {
-    acc[el.id.toLowerCase()] = el;
+    acc[el.id.toLowerCase().trim()] = el;
 
     return acc;
   }, {});
 
 export const selectCategoriesTrans = state =>
   state.finance.categoriesTrans.reduce((acc, el) => {
-    acc[el.name.toLowerCase()] = el;
+    acc[el.name.toLowerCase().trim()] = el;
 
     return acc;
   }, {});

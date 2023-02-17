@@ -3,7 +3,7 @@ import Media from 'react-media';
 import IconSV from '../../assets/icons/symbol-defs.svg';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
 import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
-
+import { selectIsModalAddTransactionOpen } from '../../redux/global/globalSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   selectCategoriesForId,
@@ -12,18 +12,38 @@ import {
 } from 'redux/finance/financeSlice';
 import Loader from 'components/Loader/Loader';
 import { removeTransaction } from 'redux/finance/financeOperations';
+import { useState } from 'react';
+import { toggleModalAddTrans } from 'redux/global/globalSlice';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
   const transactions = useSelector(selectTransactions);
   const categoriesTransForId = useSelector(selectCategoriesForId);
   const isLoading = useSelector(selectFinanceIsLoading);
+  const isOpenModalGlobal = useSelector(selectIsModalAddTransactionOpen);
+
+  const [openEditModal, setOpenEditModal] = useState(false);
+  const [transactionObj, setTransactionObj] = useState(null);
 
   const categoryFunc = categoryId =>
     categoriesTransForId[categoryId.toLowerCase()].name;
 
+  const handleOpenEdit = obj => {
+    setTransactionObj(obj);
+    setOpenEditModal(true);
+    dispatch(toggleModalAddTrans());
+  };
+
   return (
     <>
+      {isOpenModalGlobal && (
+        <ModalAddTransaction
+          editModal={openEditModal}
+          closeEditModal={setOpenEditModal}
+          newObjTransaction={transactionObj}
+        />
+      )}
+      <ButtonAddTransactions />
       <Media
         queries={{
           small: '(max-width: 767px)',
@@ -198,6 +218,16 @@ const Dashboard = () => {
                                 <td className={s.tableData}>
                                   <svg
                                     // svg
+                                    onClick={() => {
+                                      handleOpenEdit({
+                                        amount,
+                                        comment,
+                                        categoryId,
+                                        type,
+                                        transactionDate,
+                                        id,
+                                      });
+                                    }}
                                     className={s.mysvg}
                                     width="13"
                                     height="21"
@@ -229,8 +259,6 @@ const Dashboard = () => {
           </>
         )}
       </Media>
-      <ModalAddTransaction />
-      <ButtonAddTransactions />
     </>
   );
 };
