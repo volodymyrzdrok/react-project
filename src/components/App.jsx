@@ -8,12 +8,12 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
 import routes from 'utils/routes';
 import Layout from 'components/Layout/Layout';
-
 import { useMediaQuery } from 'react-responsive';
 import CurrentPageMobile from 'pages/CurrencyPageMobile/CurrencyPageMobile';
 import { getUserCurrent } from 'redux/session/sessionOperations.js';
 import { getCategoriesTransaction } from 'redux/finance/financeOperations.js';
 import { selectTransactions } from 'redux/finance/financeSlice.js';
+import { selectIdToken } from '../redux/session/sessionSlice';
 
 const HomePage = lazy(() => import('pages/HomePage/HomePage.jsx'));
 
@@ -27,16 +27,16 @@ const Statistics = lazy(() => import('./Statistics/Statistics.js'));
 export const App = () => {
   const isMobileOnly = useMediaQuery({ query: '(max-width: 767px)' });
   const transactions = useSelector(selectTransactions);
+  const idToken = useSelector(selectIdToken);
 
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUserCurrent());
-  }, [transactions, dispatch]);
+    dispatch(getCategoriesTransaction());
+  }, [dispatch, idToken]);
 
   useEffect(() => {
     dispatch(getUserCurrent());
-    dispatch(getCategoriesTransaction());
-  }, [dispatch]);
+  }, [dispatch, transactions]);
 
   return (
     <Routes>
