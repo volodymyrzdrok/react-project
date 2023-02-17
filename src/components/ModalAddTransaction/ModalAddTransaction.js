@@ -143,6 +143,7 @@ const ModalAddTransaction = ({
                     formik.resetForm();
                   }}
                   checked={isChacked}
+                  disabled={editModal}
                 />
               }
             />
@@ -169,6 +170,7 @@ const ModalAddTransaction = ({
               onChange={e => {
                 formik.setFieldValue('categoryName', e);
               }}
+              isDisabled={editModal}
             />
           </>
         )}
@@ -201,6 +203,7 @@ const ModalAddTransaction = ({
               name="transactionDate"
               showIcon
               selected={startDate}
+              disabled={editModal}
               onChange={date => {
                 setStartDate(date);
               }}
