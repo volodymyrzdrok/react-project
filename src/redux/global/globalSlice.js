@@ -14,6 +14,9 @@ export const globalSlice = createSlice({
     toggleModalAddTrans(state, action) {
       state.isModalAddTransactionOpen = !state.isModalAddTransactionOpen;
     },
+    toggleModalLogout(state, action) {
+      state.isModalLogoutOpen = !state.isModalLogoutOpen;
+    },
   },
   extraReducers: builder => {},
 });
@@ -26,3 +29,4 @@ export const selectGlobalErrorStatus = state => state.global.error;
 
 export const global = globalSlice.reducer;
 export const { toggleModalAddTrans } = globalSlice.actions;
+export const { toggleModalLogout } = globalSlice.actions;
