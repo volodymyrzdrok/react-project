@@ -11,7 +11,9 @@ function Chart({ data, periodTotal }) {
     <div className={s.chartWrapper}>
       <Doughnut data={data} />
       <span className={s.total}>
-        {periodTotal ? '₴' + Math.abs(periodTotal) : 'no transactions'}
+        {periodTotal
+          ? `₴ ${Math.abs(periodTotal.toFixed(2))}`
+          : 'no transactions'}
       </span>
     </div>
   );
