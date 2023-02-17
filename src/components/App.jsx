@@ -1,8 +1,8 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 // import Loader from './Loader/Loader';
-// import PrivateRoute from './Routes/PrivateRoute';
-// import PublicRoute from './Routes/PublicRoute';
+import PrivateRoute from './Routes/PrivateRoute';
+import PublicRoute from './Routes/PublicRoute';
 
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { lazy } from 'react';
@@ -41,7 +41,10 @@ export const App = () => {
   return (
     <Routes>
       <Route path={routes.home} element={<Layout />}>
-        <Route path={routes.home} element={<HomePage />}>
+        <Route
+          path={routes.home}
+          element={<PrivateRoute component={<HomePage />} />}
+        >
           <Route index element={<Navigate to={routes.dashboard} />} />
           <Route path={routes.dashboard} element={<Dashboard />} />
           <Route path={routes.statistics} element={<Statistics />} />
@@ -58,8 +61,14 @@ export const App = () => {
             }
           />
         </Route>
-        <Route path={routes.register} element={<RegistrationPage />} />
-        <Route path={routes.login} element={<LoginPage />} />
+        <Route
+          path={routes.register}
+          element={<PublicRoute component={<RegistrationPage />} />}
+        />
+        <Route
+          path={routes.login}
+          element={<PublicRoute component={<LoginPage />} />}
+        />
 
         <Route path="*" element={<Navigate to={routes.home} replace />} />
       </Route>
