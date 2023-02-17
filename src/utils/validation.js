@@ -48,6 +48,7 @@ export const AddTransactionSchema = isChacked => {
       })
     : Yup.object().shape({
         amount: Yup.number()
+          // .max(10, 'Too Long!')
           .typeError('only numbers')
           .positive("amount can't start with a minus")
           .integer(" can't include a decimal point")
