@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { clearAuthHeader, setAuthHeader } from 'services/apiHelpers';
+import { setAuthHeader } from 'services/apiHelpers';
 
 export const getCategoriesTransaction = createAsyncThunk(
   'trans/getCategories',
@@ -53,7 +53,7 @@ export const addTransaction = createAsyncThunk(
     setAuthHeader(idToken);
     try {
       const response = await axios.post('/api/transactions', newTransObj);
-      console.log('response.data :', response.data.type);
+      // console.log('response.data :', response.data.type);
       return response.data;
     } catch (err) {
       console.log(err.message);
@@ -90,7 +90,7 @@ export const editTransaction = createAsyncThunk(
         comment,
       });
 
-      console.log('edit response :', response.data);
+      // console.log('edit response :', response.data);
       return response.data;
     } catch (err) {
       console.log(err.message);
