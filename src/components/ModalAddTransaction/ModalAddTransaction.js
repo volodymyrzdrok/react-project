@@ -14,117 +14,115 @@ import {
   toggleModalAddTrans,
 } from 'redux/global/globalSlice';
 import { useFormik } from 'formik';
+import {
+  selectCategoriesForId,
+  selectCategoriesTrans,
+} from 'redux/finance/financeSlice';
+import {
+  addTransaction,
+  editTransaction,
+} from 'redux/finance/financeOperations';
+import { AddTransactionSchema } from 'utils/validation';
 
 const options = [
-  { value: 'main expenses', label: 'Main expenses' },
-  { value: 'products', label: 'Products' },
-  { value: 'car', label: 'Car' },
-  { value: 'self care', label: 'Self care' },
-  { value: 'child care', label: 'Child care' },
-  { value: 'household products', label: 'Household products' },
-  { value: 'education', label: 'Education' },
-  { value: 'leisure', label: 'Leisure' },
-  { value: 'other expenses', label: 'Other expenses' },
-  { value: 'entertainment', label: 'Entertainment' },
+  { value: 'Main expenses ', label: 'Main expenses' },
+  { value: 'Products', label: 'Products' },
+  { value: 'Car', label: 'Car' },
+  { value: 'Self care', label: 'Self care' },
+  { value: 'Child care', label: 'Child care' },
+  { value: 'Household products', label: 'Household products' },
+  { value: 'Education', label: 'Education' },
+  { value: 'Leisure', label: 'Leisure' },
+  { value: 'Other expenses', label: 'Other expenses' },
+  { value: 'Entertainment', label: 'Entertainment' },
 ];
-// const categoryId = [
-//   {
-//     id: 'c9d9e447-1b83-4238-8712-edc77b18b739',
-//     name: 'Main expenses',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '27eb4b75-9a42-4991-a802-4aefe21ac3ce',
-//     name: 'Products',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '3caa7ba0-79c0-40b9-ae1f-de1af1f6e386',
-//     name: 'Car',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: 'bbdd58b8-e804-4ab9-bf4f-695da5ef64f4',
-//     name: 'Self care',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '76cc875a-3b43-4eae-8fdb-f76633821a34',
-//     name: 'Child care',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '128673b5-2f9a-46ae-a428-ec48cf1effa1',
-//     name: 'Household products',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '1272fcc4-d59f-462d-ad33-a85a075e5581',
-//     name: 'Education',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: 'c143130f-7d1e-4011-90a4-54766d4e308e',
-//     name: 'Leisure',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '719626f1-9d23-4e99-84f5-289024e437a8',
-//     name: 'Other expenses',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '3acd0ecd-5295-4d54-8e7c-d3908f4d0402',
-//     name: 'Entertainment',
-//     type: 'EXPENSE',
-//   },
-//   {
-//     id: '063f1132-ba5d-42b4-951d-44011ca46262',
-//     name: 'Income',
-//     type: 'INCOME',
-//   },
-// ];
 
-const ModalAddTransaction = () => {
-  const [isChacked, setIsChacked] = useState(true);
-  const [startDate, setStartDate] = useState(new Date());
-
-  // const categoryIdObj = categoryId.reduce((acc, el) => {
-  //   acc[el.name] = el;
-
-  //   return acc;
-  // }, {});
-
-  const formik = useFormik({
-    initialValues: {
-      categoryName: null,
-
-      transactionDate: startDate,
-      type: !isChacked ? 'INCOME' : 'EXPENSE',
-      comment: '',
-      amount: 0,
-    },
-    // validationSchema: SigninSchema,
-    onSubmit: values => {
-      // console.log('values :', values);
-      // console.log('id :', categoryIdObj[values.categoryId].id);
-    },
-  });
-
-  // const { errors, touched } = formik;
-
-  const isMobile = useMediaQuery({ query: '(min-width: 768px)' });
-
+const ModalAddTransaction = ({
+  editModal,
+  closeEditModal,
+  newObjTransaction,
+}) => {
+  const dispatch = useDispatch();
+  const converNameFromId = useSelector(selectCategoriesForId);
   const isModalAddTransactionOpen = useSelector(
     selectIsModalAddTransactionOpen
   );
+  const categoriesTrans = useSelector(selectCategoriesTrans);
+  const categNameFromData = () =>
+    converNameFromId[newObjTransaction.categoryId.toLowerCase()].name;
 
-  const dispatch = useDispatch();
-  const handleClose = () => dispatch(toggleModalAddTrans());
+  const isChackedDefault = editModal
+    ? newObjTransaction.type === 'INCOME'
+      ? false
+      : true
+    : true;
+
+  const [isChacked, setIsChacked] = useState(isChackedDefault);
+  const [startDate, setStartDate] = useState(() =>
+    !editModal ? new Date() : new Date(newObjTransaction.transactionDate)
+  );
+
+  const handleClose = () => {
+    closeEditModal(false);
+    dispatch(toggleModalAddTrans());
+  };
+
+  const formik = useFormik({
+    initialValues: !editModal
+      ? {
+          categoryName: null,
+          comment: '',
+          amount: 0,
+        }
+      : {
+          categoryName: {
+            value: categNameFromData(),
+            label: categNameFromData(),
+          },
+          comment: newObjTransaction.comment,
+          amount:
+            newObjTransaction.amount > 0
+              ? newObjTransaction.amount
+              : newObjTransaction.amount * -1,
+        },
+
+    validationSchema: AddTransactionSchema(isChacked),
+    onSubmit: values => {
+      const { comment, amount, categoryName } = values;
+      const type = !isChacked ? 'INCOME' : 'EXPENSE';
+      const transactionDate = convertDate(startDate);
+      const categoryId =
+        type === 'EXPENSE'
+          ? categoriesTrans[categoryName.value.toLowerCase().trim()].id
+          : categoriesTrans['income'].id;
+      if (editModal) {
+        const editTransObj = {
+          id: newObjTransaction.id,
+          amount: isChacked ? amount * -1 : Number(amount),
+          comment,
+        };
+        dispatch(editTransaction(editTransObj));
+        handleClose();
+      } else {
+        const newTransObj = {
+          transactionDate,
+          type,
+          categoryId,
+          comment,
+          amount: isChacked ? amount * -1 : Number(amount),
+        };
+
+        dispatch(addTransaction(newTransObj));
+        handleClose();
+      }
+    },
+  });
+
+  const { errors, touched } = formik;
+  const isMobile = useMediaQuery({ query: '(min-width: 768px)' });
 
   return (
     <Modal open={isModalAddTransactionOpen} onClose={handleClose}>
-      {/* <Box sx={styleModal}> */}
       <form className={s.containerModal} onSubmit={formik.handleSubmit}>
         {isMobile && (
           <button className={s.closeBtn} type="button" onClick={handleClose}>
@@ -133,7 +131,7 @@ const ModalAddTransaction = () => {
             </svg>
           </button>
         )}
-        <h2 className={s.title}>Add transaction</h2>
+        <h2 className={s.title}>{editModal ? 'Edit' : 'Add'} transaction</h2>
 
         <div className={s.swichWrap}>
           <p className={isChacked ? s.transaction : s.incomeAactive}>Income</p>
@@ -143,8 +141,12 @@ const ModalAddTransaction = () => {
               control={
                 <MaterialUISwitch
                   sx={{ m: 1, overflow: 'visible' }}
-                  onChange={() => setIsChacked(!isChacked)}
+                  onChange={() => {
+                    setIsChacked(!isChacked);
+                    formik.resetForm();
+                  }}
                   checked={isChacked}
+                  disabled={editModal}
                 />
               }
             />
@@ -155,29 +157,45 @@ const ModalAddTransaction = () => {
         </div>
 
         {isChacked && (
-          <Select
-            options={options}
-            classNamePrefix="custom-select"
-            className={s.select}
-            name="categoryName"
-            placeholder="Select a category"
-            // onChange={formik.handleChange}
-            onChange={e => {
-              // console.log('e.value :', e.value);
-              formik.setFieldValue('categoryName', e.value);
-            }}
-            value={formik.values.categoryName}
-          />
+          <>
+            <p>
+              {errors.categoryName && touched.categoryName
+                ? errors.categoryName
+                : null}
+            </p>
+            <Select
+              options={options}
+              classNamePrefix="custom-select"
+              className={s.select}
+              name="categoryName"
+              placeholder="Select a category"
+              value={formik.values.categoryName}
+              onChange={e => {
+                formik.setFieldValue('categoryName', e);
+              }}
+              isDisabled={editModal}
+            />
+          </>
         )}
 
         <div className={s.inputWrap}>
+          <p> {errors.amount && touched.amount ? errors.amount : null}</p>
           <label className={s.label}>
             <input
               className={s.input}
               type="number"
               name="amount"
               placeholder="0.00"
-              onChange={formik.handleChange}
+              // onChange={formik.handleChange}
+              onChange={e => {
+                // console.log('e.target.value :', e.target.value);
+                formik.setFieldValue(
+                  'amount',
+                  e.target.value[0] === '0'
+                    ? e.target.value.slice(1)
+                    : e.target.value
+                );
+              }}
               value={formik.values.amount}
             />
           </label>
@@ -188,7 +206,10 @@ const ModalAddTransaction = () => {
               name="transactionDate"
               showIcon
               selected={startDate}
-              onChange={date => setStartDate(date)}
+              disabled={editModal}
+              onChange={date => {
+                setStartDate(date);
+              }}
             />
           </label>
         </div>
@@ -205,7 +226,7 @@ const ModalAddTransaction = () => {
           />
         </label>
         <button className={s.mainBtn} type="submit">
-          add
+          {editModal ? 'Edit' : 'Add'}
         </button>
         <button className={s.secondaryBtn} type="button">
           cancel
@@ -216,3 +237,11 @@ const ModalAddTransaction = () => {
 };
 
 export default ModalAddTransaction;
+
+function convertDate(date) {
+  const year = date.getFullYear();
+  const month = String(date.getMonth() + 1).padStart(2, '0');
+  const day = String(date.getDate()).padStart(2, '0');
+
+  return `${year}-${month}-${day}`;
+}

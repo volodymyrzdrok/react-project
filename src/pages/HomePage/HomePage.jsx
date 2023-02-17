@@ -7,11 +7,18 @@ import Navigation from 'components/Navigation/Navigation';
 
 import s from './_HomePage.module.scss';
 import { useMediaQuery } from 'react-responsive';
-import { Suspense } from 'react';
+import { Suspense, useEffect } from 'react';
 import Loader from 'components/Loader/Loader';
+import { useDispatch } from 'react-redux';
+import { fetchAllTransactions } from 'redux/finance/financeOperations';
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(fetchAllTransactions());
+  }, [dispatch]);
+
   return (
     <>
       <Header />
