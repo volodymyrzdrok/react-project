@@ -51,11 +51,11 @@ const HomePage = () => {
                 </div>
               </div>
 
-              {/* <div> */}
-              <Suspense fallback={<Loader />}>
-                <Outlet />
-              </Suspense>
-              {/* </div> */}
+              <div>
+                <Suspense fallback={<Loader />}>
+                  <Outlet />
+                </Suspense>
+              </div>
             </div>
           </div>
         </div>
