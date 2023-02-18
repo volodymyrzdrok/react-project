@@ -131,7 +131,19 @@ const Dashboard = () => {
                               >
                                 Delete
                               </button>
-                              <a className={s.mobileTrItem__edit} href>
+                              <span
+                                className={s.mobileTrItem__edit}
+                                onClick={() => {
+                                  handleOpenEdit({
+                                    amount,
+                                    comment,
+                                    categoryId,
+                                    type,
+                                    transactionDate,
+                                    id,
+                                  });
+                                }}
+                              >
                                 <svg
                                   width="12"
                                   height="12"
@@ -141,7 +153,7 @@ const Dashboard = () => {
                                   <use href={`${IconSV}#icon-pencil`} />
                                 </svg>
                                 <p>Edit</p>
-                              </a>
+                              </span>
                             </li>
                           </ul>
                         </li>
@@ -150,7 +162,6 @@ const Dashboard = () => {
                   )
                 )}
               </ul>
-              
             )}
             {matches.medium && (
               <div className={s.tableTrList}>
@@ -260,7 +271,6 @@ const Dashboard = () => {
           </>
         )}
       </Media>
-      
     </>
   );
 };

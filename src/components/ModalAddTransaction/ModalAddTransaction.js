@@ -160,6 +160,9 @@ const ModalAddTransaction = ({
         {isChacked && (
           <>
             <div className={s.selectWrapper}>
+              {touched.categoryName && errors.categoryName ? (
+                <span className={s.selectMistake}>{errors.categoryName}</span>
+              ) : null}
               <Select
                 options={options}
                 classNamePrefix="custom-select"
@@ -172,9 +175,6 @@ const ModalAddTransaction = ({
                 }}
                 isDisabled={editModal}
               />
-              {touched.categoryName && errors.categoryName ? (
-                <span className={s.selectMistake}>{errors.categoryName}</span>
-              ) : null}
             </div>
           </>
         )}
@@ -186,9 +186,7 @@ const ModalAddTransaction = ({
               type="number"
               name="amount"
               placeholder="0.00"
-              // onChange={formik.handleChange}
               onChange={e => {
-                // console.log('e.target.value :', e.target.value);
                 formik.setFieldValue(
                   'amount',
                   e.target.value[0] === '0'

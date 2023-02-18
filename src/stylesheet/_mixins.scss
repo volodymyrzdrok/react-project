@@ -39,6 +39,11 @@
     @content;
   }
 }
+@mixin to-tablet-media {
+  @media screen and (max-width: $tablet) {
+    @content;
+  }
+}
 
 @mixin tablet-media {
   @media screen and (min-width: $tablet) {
