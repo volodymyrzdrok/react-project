@@ -27,9 +27,11 @@ const filterColors = categories => {
   const filteredColorsArr = [];
   const colorArr = Object.entries(colors);
 
-  for (const category of categories) {
-    const filteredColor = colorArr.find(el => el[0] === category)[1];
-    filteredColorsArr.push(filteredColor);
+  if (categories.length !== 0) {
+    for (const category of categories) {
+      const filteredColor = colorArr.find(el => el[0] === category)[1];
+      filteredColorsArr.push(filteredColor);
+    }
   }
 
   return filteredColorsArr;
@@ -53,6 +55,7 @@ const Statistics = () => {
 
   const transactionData = transactionsSummary?.categoriesSummary || [];
   const { dataTotal, dataName } = formatData(transactionData);
+
   const filteredColors = filterColors(dataName);
   const datasetLabel = dataName.length ? 'Total' : 'No data';
 

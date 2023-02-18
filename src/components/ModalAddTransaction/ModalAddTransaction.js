@@ -206,12 +206,10 @@ const ModalAddTransaction = ({
             <DatePicker
               className={s.inputDatePicker}
               name="transactionDate"
-              showIcon
+              // showIcon
               selected={startDate}
               disabled={editModal}
-              onChange={date => {
-                setStartDate(date);
-              }}
+              onChange={date => setStartDate(date)}
             />
           </label>
         </div>
