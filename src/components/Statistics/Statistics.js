@@ -47,6 +47,15 @@ const Statistics = () => {
     dispatch(getTransactionsStats({ month: 4, year: 2023 }));
   };
 
+  // const [period, setPeriod] = useState({});
+  // const getPeriod = (month, year) => {
+  //   setPeriod({ month, year });
+  // };
+
+  // useEffect(() => {
+  //   dispatch(getTransactionsStats(period));
+  // }, [dispatchб period]);
+
   const transactionData = transactionsSummary?.categoriesSummary || [];
   const { dataTotal, dataName } = formatData(transactionData);
   const filteredColors = filterColors(dataName);
