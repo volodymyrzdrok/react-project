@@ -7,6 +7,7 @@ import s from './Statistics.module.scss';
 import colors from './colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsStats } from 'redux/transactionsSummary/transactionsSummaryOperations';
+import DateSelect from 'components/DateSelect/DateSelect';
 
 const formatData = transactions => {
   const dataTotal = [];
@@ -91,8 +92,9 @@ const Statistics = () => {
         </div>
         <div className={s.transactionsSummaryBlock}>
           <div className={s.selectorsBlock}>
-            <button onClick={onClickM}>February</button>
-            <button onClick={onClickY}>March</button>
+            {/* <button onClick={onClickM}>February</button>
+            <button onClick={onClickY}>March</button> */}
+            <DateSelect />
           </div>
           <Table {...transactionsSummary} colors={filteredColors} />
         </div>
