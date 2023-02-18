@@ -1,12 +1,11 @@
-import React from 'react';
-
+import React, { useEffect, useState } from 'react';
 import Table from '../Table/Table';
 import Chart from '../Chart/Chart';
 import s from './Statistics.module.scss';
-
 import colors from './colors';
 import { useDispatch, useSelector } from 'react-redux';
 import { getTransactionsStats } from 'redux/transactionsSummary/transactionsSummaryOperations';
+import DateSelect from 'components/DateSelect/DateSelect';
 
 const formatData = transactions => {
   const dataTotal = [];
@@ -36,17 +35,20 @@ const filterColors = categories => {
 };
 
 const Statistics = () => {
-  const dispatch = useDispatch();
-
   const { transactionsSummary } = useSelector(state => state.summary);
+  const dispatch = useDispatch();
+  const [month, setMonth] = useState(new Date().getMonth() + 1);
+  const [year, setYear] = useState(new Date().getFullYear());
 
-  const onClickM = () => {
-    dispatch(getTransactionsStats({ month: 2, year: 2023 }));
+  const handleChange = event => {
+    event.target.name === 'month'
+      ? setMonth(event.target.value)
+      : setYear(event.target.value);
   };
 
-  const onClickY = () => {
-    dispatch(getTransactionsStats({ month: 4, year: 2023 }));
-  };
+  useEffect(() => {
+    dispatch(getTransactionsStats({ month, year }));
+  }, [dispatch, month, year]);
 
   const transactionData = transactionsSummary?.categoriesSummary || [];
   const { dataTotal, dataName } = formatData(transactionData);
@@ -82,8 +84,7 @@ const Statistics = () => {
         </div>
         <div className={s.transactionsSummaryBlock}>
           <div className={s.selectorsBlock}>
-            <button onClick={onClickM}>February</button>
-            <button onClick={onClickY}>March</button>
+            <DateSelect month={month} year={year} handleChange={handleChange} />
           </div>
           <Table {...transactionsSummary} colors={filteredColors} />
         </div>

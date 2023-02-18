@@ -1,0 +1,80 @@
+@import '../../index.scss';
+
+.MuiInputBase-root {
+  width: 280px;
+  height: 50px;
+  border: 1px solid $mainTextColor;
+  border-radius: 30px;
+
+  @include tablet-media {
+    width: 160px;
+  }
+
+  &:hover {
+    box-shadow: $boxShadowDropdown;
+  }
+}
+
+.MuiSelect-select {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  @include font(16px, 24px);
+
+  color: $mainTextColor;
+  padding: 13px 20px;
+}
+
+.MuiSvgIcon-root {
+  fill: $mainTextColor;
+  right: 10px;
+}
+
+.MuiPaper-root {
+  border-radius: 20px;
+  background: #e0dfdf;
+  box-shadow: $boxShadowDropdown;
+  backdrop-filter: blur(25px);
+}
+.MuiInputBase-root * {
+  border: none !important;
+}
+
+.MuiButtonBase-root {
+  font-family: 'Circe';
+  font-style: normal;
+  font-weight: 400;
+  @include font(16px, 24px);
+
+  color: $mainTextColor;
+  background: #e0dfdf;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  &:hover {
+    background-color: $mainBgnColor;
+  }
+}
+
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root.Mui-selected {
+  background-color: #e0dfdf;
+
+  &:hover {
+    background-color: $mainBgnColor;
+  }
+}
+
+.MuiList-root {
+  height: 160px;
+  padding-top: 0;
+  padding-bottom: 0;
+  overflow-y: scroll;
+}
+
+.MuiList-root::-webkit-scrollbar {
+  width: 0;
+}
+
+.MuiList-root::-webkit-scrollbar-thumb {
+  border: none;
+}

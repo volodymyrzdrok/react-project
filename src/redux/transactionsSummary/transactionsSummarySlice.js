@@ -19,6 +19,7 @@ export const transactionsSummarySlice = createSlice({
       .addCase(getTransactionsStats.fulfilled, (state, { payload }) => {
         state.isLoading = false;
         state.transactionsSummary = payload;
+        state.error = null;
       })
       .addCase(getTransactionsStats.rejected, (state, { payload }) => {
         state.isLoading = false;

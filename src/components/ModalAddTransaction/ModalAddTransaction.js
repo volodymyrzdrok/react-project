@@ -230,7 +230,7 @@ const ModalAddTransaction = ({
         <button className={s.mainBtn} type="submit">
           {editModal ? 'Edit' : 'Add'}
         </button>
-        <button className={s.secondaryBtn} type="button">
+        <button className={s.secondaryBtn} type="button" onClick={handleClose}>
           cancel
         </button>
       </form>
