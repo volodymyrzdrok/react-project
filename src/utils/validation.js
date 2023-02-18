@@ -39,18 +39,18 @@ export const SigupLogSchema = authType => {
 export const AddTransactionSchema = isChacked => {
   return isChacked
     ? Yup.object().shape({
-        categoryName: Yup.object().required('please, choose a category'),
+        categoryName: Yup.object().required('please choose a category'),
 
         amount: Yup.number()
           .typeError('only numbers')
-          .positive("amount can't start with a minus")
+          .positive('amount must be greater than 0')
           .integer(" can't include a decimal point")
           .required('amount is required'),
       })
     : Yup.object().shape({
         amount: Yup.number()
           .typeError('only numbers')
-          .positive("amount can't start with a minus")
+          .positive('amount must be greater than 0')
           .integer(" can't include a decimal point")
           .required('amount is required'),
       });
