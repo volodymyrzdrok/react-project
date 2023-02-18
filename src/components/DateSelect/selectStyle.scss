@@ -36,6 +36,9 @@
   box-shadow: $boxShadowDropdown;
   backdrop-filter: blur(25px);
 }
+.MuiInputBase-root * {
+  border: none !important;
+}
 
 .MuiButtonBase-root {
   font-family: 'Circe';

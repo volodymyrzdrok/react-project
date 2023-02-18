@@ -1,19 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
 import { months, years } from './transactionsPeriod';
-import s from './DateSelect.module.scss';
+// import s from './DateSelect.module.scss';
 import './selectStyle.scss';
 
-function DateSelect() {
-  const [month, setMonth] = useState(new Date().getMonth() + 1);
-  const [year, setYear] = useState(new Date().getFullYear());
-
-  const handleChange = event => {
-    event.target.name === 'month'
-      ? setMonth(event.target.value)
-      : setYear(event.target.value);
-  };
-
+function DateSelect({ month, year, handleChange }) {
   return (
     <>
       {/* <div className={s.dateSelectWrap}> */}

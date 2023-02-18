@@ -30,11 +30,15 @@ export const sessionSlice = createSlice({
       .addCase(logoutUser.fulfilled, (state, { payload }) => {
         return (state = defaultState);
       })
+      .addCase(getUserCurrent.pending, (state, { payload }) => {
+        state.isFetchingCurrentUser = true;
+      })
       .addCase(getUserCurrent.fulfilled, (state, { payload }) => {
         state.isAuthStatus = true;
         state.user.userId = payload.id;
         state.user.name = payload.username;
         state.user.email = payload.email;
+        state.isFetchingCurrentUser = false;
       })
       .addMatcher(
         ({ type }) => {
@@ -66,6 +70,7 @@ export const sessionSlice = createSlice({
         state => {
           state.error = null;
           state.isLoading = false;
+          state.isFetchingCurrentUser = false;
         }
       )
       .addMatcher(
@@ -75,7 +80,7 @@ export const sessionSlice = createSlice({
         (state, action) => {
           state.isLoading = false;
           state.error = action.payload;
-          // state.isFetchingCurrentUser = false;
+          state.isFetchingCurrentUser = false;
         }
       );
   },
