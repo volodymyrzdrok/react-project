@@ -15,6 +15,7 @@ const ButtonAddTransactions = () => {
           // position: 'fixed',
           // bottom: '40px',
           // right: '40px',
+
           color: '#24cca7',
           width: '44px',
           height: '44px',
