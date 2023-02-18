@@ -23,6 +23,7 @@ import {
   editTransaction,
 } from 'redux/finance/financeOperations';
 import { AddTransactionSchema } from 'utils/validation';
+import IconCalendar from 'assets/icons/IconCalendar/IconCalendar';
 
 const options = [
   { value: 'Main expenses ', label: 'Main expenses' },
@@ -158,28 +159,27 @@ const ModalAddTransaction = ({
 
         {isChacked && (
           <>
-            <p>
-              {errors.categoryName && touched.categoryName
-                ? errors.categoryName
-                : null}
-            </p>
-            <Select
-              options={options}
-              classNamePrefix="custom-select"
-              className={s.select}
-              name="categoryName"
-              placeholder="Select a category"
-              value={formik.values.categoryName}
-              onChange={e => {
-                formik.setFieldValue('categoryName', e);
-              }}
-              isDisabled={editModal}
-            />
+            <div className={s.selectWrapper}>
+              <Select
+                options={options}
+                classNamePrefix="custom-select"
+                className={s.select}
+                name="categoryName"
+                placeholder="Select a category"
+                value={formik.values.categoryName}
+                onChange={e => {
+                  formik.setFieldValue('categoryName', e);
+                }}
+                isDisabled={editModal}
+              />
+              {touched.categoryName && errors.categoryName ? (
+                <span className={s.selectMistake}>{errors.categoryName}</span>
+              ) : null}
+            </div>
           </>
         )}
 
         <div className={s.inputWrap}>
-          <p> {errors.amount && touched.amount ? errors.amount : null}</p>
           <label className={s.label}>
             <input
               className={s.input}
@@ -198,11 +198,15 @@ const ModalAddTransaction = ({
               }}
               value={formik.values.amount}
             />
+            {touched.amount && errors.amount ? (
+              <span className={s.inputMistake}>{errors.amount}</span>
+            ) : null}
           </label>
 
           <label className={s.label}>
+            <IconCalendar className={s.iconCalendar} />
             <DatePicker
-              className={s.input}
+              className={s.inputDatePicker}
               name="transactionDate"
               showIcon
               selected={startDate}

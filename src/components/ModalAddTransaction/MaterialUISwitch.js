@@ -7,15 +7,15 @@ const MaterialUISwitch = styled(Switch)(arg => {
   return {
     width: 80,
     height: 40,
-    padding: 7,
+    padding: 2,
     '& .MuiSwitch-switchBase': {
       height: '40px',
       margin: 1,
       padding: 0,
-      transform: 'translateX(4px)',
+      transform: 'translateX(0px)',
       '&.Mui-checked': {
         color: '#fff',
-        transform: 'translateX(32px)',
+        transform: 'translateX(35px)',
         '& .MuiSwitch-thumb:before': {
           content: "''",
           position: 'absolute',
@@ -36,6 +36,10 @@ const MaterialUISwitch = styled(Switch)(arg => {
     },
     '& .MuiSwitch-thumb': {
       backgroundColor: checked ? '#ff6596' : '#24cca7',
+      boxShadow: checked
+        ? '0px 6px 15px rgba(255, 101, 150, 0.5)'
+        : '0px 6px 15px rgba(36, 204, 167, 0.5)',
+
       width: 44,
       height: 44,
       '&:before': {
