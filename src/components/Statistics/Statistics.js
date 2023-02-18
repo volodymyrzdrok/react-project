@@ -27,10 +27,10 @@ const filterColors = categories => {
   const filteredColorsArr = [];
   const colorArr = Object.entries(colors);
 
-  if (categories.length !== 0) {
-    for (const category of categories) {
-      const filteredColor = colorArr.find(el => el[0] === category)[1];
-      filteredColorsArr.push(filteredColor);
+  for (const category of categories) {
+    const filteredColor = colorArr.find(el => el[0] === category);
+    if (filteredColor) {
+      filteredColorsArr.push(filteredColor[1]);
     }
   }
 

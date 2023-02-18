@@ -9,6 +9,7 @@
       url('../../assets/images/ellipse-blue.png');
     background-position: left bottom, right top;
     background-repeat: no-repeat, no-repeat;
+    min-height: calc(100vh - 80px);
   }
 }
 
@@ -17,6 +18,9 @@
   min-height: $backdropHeight;
 
   backdrop-filter: blur(25px);
+  @include tablet-media {
+    min-height: calc(100vh - 80px);
+  }
 }
 
 .contentWrapper {
@@ -46,7 +50,7 @@
   }
 
   @include desktop-media {
-    min-height: $backdropHeight;
+    min-height: calc(100vh - 80px);
     display: block;
     padding-right: 69px;
     border-right: 1px solid #e7e5f2;

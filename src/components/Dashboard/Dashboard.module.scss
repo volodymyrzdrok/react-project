@@ -155,18 +155,17 @@
 }
 
 .tableScrollBox::-webkit-scrollbar {
-  width: 10px;
+  width: 7px;
   background-color: transparent;
 }
 
 .tableScrollBox::-webkit-scrollbar-thumb {
-  background-color: transparent;
-  border: 2px solid $blueTextColor;
+  background-color: $navIconsColor;
   border-radius: 5px;
 }
 
 .tableScrollBox::-webkit-scrollbar-thumb:hover {
-  background: $navIconsColor;
+  background: $blueTextColor;
 }
 
 .tableScrollBox {

@@ -201,17 +201,17 @@ const ModalAddTransaction = ({
             ) : null}
           </label>
 
-          <label className={s.label}>
+          <div className={s.label}>
             <IconCalendar className={s.iconCalendar} />
             <DatePicker
               className={s.inputDatePicker}
               name="transactionDate"
-              // showIcon
+              showIcon
               selected={startDate}
               disabled={editModal}
               onChange={date => setStartDate(date)}
             />
-          </label>
+          </div>
         </div>
 
         <label className={s.comment}>

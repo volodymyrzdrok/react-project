@@ -1,4 +1,4 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 
 import Balance from 'components/Balance/Balance';
 import Currency from 'components/Currency/Currency';
@@ -11,13 +11,20 @@ import { Suspense, useEffect } from 'react';
 import Loader from 'components/Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { fetchAllTransactions } from 'redux/finance/financeOperations';
+import routes from 'utils/routes';
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
+  const onlyMobile = useMediaQuery({ query: '(max-width: 767px)' });
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(fetchAllTransactions());
   }, [dispatch]);
+
+  const location = useLocation();
+
+  const onlyStatisticPage =
+    location.pathname === routes.dashboard && onlyMobile;
 
   return (
     <>
@@ -33,7 +40,7 @@ const HomePage = () => {
                       <Navigation />
                     </div>
 
-                    <Balance />
+                    {onlyStatisticPage && <Balance />}
                   </div>
                   {isTablet && (
                     <div className={s.tableWrapper}>
