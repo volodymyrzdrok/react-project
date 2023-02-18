@@ -16,6 +16,10 @@
 
   overflow: hidden;
 
+  @include to-tablet-media {
+    margin: 31px auto;
+  }
+
   @include tablet-media {
     width: 336px;
     height: 182px;

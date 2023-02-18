@@ -47,7 +47,10 @@ const ModalLogout = () => {
           </button>
           <button
             className={s.logoutBtn}
-            onClick={() => dispatch(logoutUser())}
+            onClick={() => {
+              dispatch(logoutUser());
+              dispatch(toggleModalLogout());
+            }}
           >
             Log out
           </button>

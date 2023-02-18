@@ -1,6 +1,6 @@
 @import "../../index.scss";
 .table {
-    width: 280px;
+    
     @include tablet-media {
         width: 336px; 
       }
@@ -12,14 +12,15 @@
     display: flex;
     flex-direction: column;
     width: 100%;
-
     font-style: normal;
     font-weight: 400;
     font-size: 16px;
     line-height: 1.12;
+    margin-bottom: 30px;
 }
 
 .table__title {
+    font-family: 'Circe';
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -32,7 +33,6 @@
     font-size: 18px;
     line-height: 1.5;
     background-color: $mainBgnColor;
-    width: 280px;
 
     @include tablet-media {
         width: 336px; 
@@ -58,7 +58,7 @@
 }
 
 .tableScrollBox::-webkit-scrollbar-thumb:hover {
-    background: $blueTextColor;
+    background: $navIconsColor;
 }
 
 .tableScrollBox {
@@ -105,23 +105,26 @@
     width: 40%;
 }
 .table__bottom {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 16px;
     margin-top: 16px;
     padding-left: 20px;
     padding-right: 20px;
 }
 .first {
+    font-family: 'Circe';
     width: 50%;
     display: inline-block;
 }
 .second__expense {
+    font-family: 'Circe';
     width: 50%;
     display: inline-block;
     color: $redBgnColor;
     text-align: end;
 }
 .second__income {
+    font-family: 'Circe';
     width: 50%;
     display: inline-block;
     color: $accentBgnColor;

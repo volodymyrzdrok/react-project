@@ -20,7 +20,8 @@
 }
 
 .contentWrapper {
-  @include centeredFlex();
+  display: flex;
+  justify-content: center;
   flex-direction: column;
 
   @include tablet-media {
@@ -54,7 +55,15 @@
 }
 
 .infoWrapper {
-  margin-bottom: 32px;
+  @include tablet-only-media {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  @include desktop-media {
+    margin-bottom: 32px;
+  }
 }
 
 .nav {
