@@ -24,7 +24,8 @@ const HomePage = () => {
   const location = useLocation();
 
   const onlyStatisticPage =
-    location.pathname === routes.dashboard && onlyMobile;
+    location.pathname === routes.currency ||
+    (location.pathname === routes.statistics && onlyMobile);
 
   return (
     <>
@@ -40,7 +41,7 @@ const HomePage = () => {
                       <Navigation />
                     </div>
 
-                    {onlyStatisticPage && <Balance />}
+                    {!onlyStatisticPage && <Balance />}
                   </div>
                   {isTablet && (
                     <div className={s.tableWrapper}>
@@ -50,11 +51,11 @@ const HomePage = () => {
                 </div>
               </div>
 
-              <div>
-                <Suspense fallback={<Loader />}>
-                  <Outlet />
-                </Suspense>
-              </div>
+              {/* <div> */}
+              <Suspense fallback={<Loader />}>
+                <Outlet />
+              </Suspense>
+              {/* </div> */}
             </div>
           </div>
         </div>

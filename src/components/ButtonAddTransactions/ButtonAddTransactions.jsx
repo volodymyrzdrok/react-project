@@ -1,7 +1,7 @@
-import { AiFillPlusCircle } from 'react-icons/ai';
 import { useDispatch } from 'react-redux';
 import { toggleModalAddTrans } from 'redux/global/globalSlice';
 import s from './ButtonAddTransactions.module.scss';
+import IconSV from '../../assets/icons/symbol-defs.svg';
 
 const ButtonAddTransactions = () => {
   const dispatch = useDispatch();
@@ -10,17 +10,9 @@ const ButtonAddTransactions = () => {
   };
   return (
     <button onClick={onClickToggle} className={s.btn} type="button">
-      <AiFillPlusCircle
-        style={{
-          // position: 'fixed',
-          // bottom: '40px',
-          // right: '40px',
-
-          color: '#24cca7',
-          width: '44px',
-          height: '44px',
-        }}
-      />
+      <svg className={s.icon} fill="#fff" stroke="#fff">
+        <use href={`${IconSV}#icon-plus`} />
+      </svg>
     </button>
   );
 };
