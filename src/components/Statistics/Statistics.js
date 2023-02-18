@@ -26,6 +26,7 @@ const formatData = transactions => {
 const filterColors = categories => {
   const filteredColorsArr = [];
   const colorArr = Object.entries(colors);
+
   for (const category of categories) {
     const filteredColor = colorArr.find(el => el[0] === category)[1];
     filteredColorsArr.push(filteredColor);
