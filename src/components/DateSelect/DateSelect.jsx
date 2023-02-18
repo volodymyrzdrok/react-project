@@ -1,13 +1,11 @@
 import React from 'react';
 import { FormControl, MenuItem, Select } from '@mui/material';
 import { months, years } from './transactionsPeriod';
-// import s from './DateSelect.module.scss';
 import './selectStyle.scss';
 
 function DateSelect({ month, year, handleChange }) {
   return (
     <>
-      {/* <div className={s.dateSelectWrap}> */}
       <FormControl sx={{ m: 1 }}>
         <Select
           name="month"
@@ -38,7 +36,6 @@ function DateSelect({ month, year, handleChange }) {
           ))}
         </Select>
       </FormControl>
-      {/* </div> */}
     </>
   );
 }

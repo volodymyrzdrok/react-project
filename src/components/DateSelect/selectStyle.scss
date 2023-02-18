@@ -1,13 +1,26 @@
 @import '../../index.scss';
 
+.MuiFormControl-root {
+  margin: 0;
+}
+
 .MuiInputBase-root {
-  width: 280px;
+  width: 100%;
+
   height: 50px;
   border: 1px solid $mainTextColor;
   border-radius: 30px;
 
+  @include mobile-media {
+    width: 380px;
+  }
+
   @include tablet-media {
     width: 160px;
+  }
+
+  @include desktop-media {
+    width: 180px;
   }
 
   &:hover {
