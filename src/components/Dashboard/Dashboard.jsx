@@ -41,7 +41,7 @@ const Dashboard = () => {
   const errorFinance = useSelector(selectFinanceErrorStatus);
 
   useEffect(() => {
-    if (errorFinance) {
+    if (errorFinance === 'Request failed with status code 400') {
       toast.warning('Please, try again )', settingAlert());
       dispatch(resetErrorTransaction());
     }
