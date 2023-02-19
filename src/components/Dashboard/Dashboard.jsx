@@ -25,7 +25,6 @@ const Dashboard = () => {
   const categoriesTransForId = useSelector(selectCategoriesForId);
   const isLoading = useSelector(selectFinanceIsLoading);
   const isOpenModalGlobal = useSelector(selectIsModalAddTransactionOpen);
-
   const [openEditModal, setOpenEditModal] = useState(false);
   const [transactionObj, setTransactionObj] = useState(null);
 
@@ -204,8 +203,8 @@ const Dashboard = () => {
                   <table className={s.dataTable}>
                     <tbody className={s.tableBody}>
                       {isLoading ? (
-                        <tr>
-                          <td>
+                        <tr className={s.tableRow}>
+                          <td className={s.tableData}>
                             <Loader />
                           </td>
                         </tr>
