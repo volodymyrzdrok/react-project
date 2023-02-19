@@ -289,10 +289,3 @@ const Dashboard = () => {
   );
 };
 export default Dashboard;
-
-// function sortedByDate(arr) {
-//   if (arr.length > 1) {
-//     return arr.sort((a, b) => a.transactionDate - b.transactionDate);
-//   }
-//   return arr;
-// }
