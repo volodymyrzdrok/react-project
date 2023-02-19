@@ -24,7 +24,11 @@ const defaultState = {
 export const financeSlice = createSlice({
   name: 'finance',
   initialState: defaultState,
-  reducers: {},
+  reducers: {
+    resetErrorTransaction(state, _) {
+      state.error = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(loginUser.fulfilled, (state, { payload }) => {
@@ -104,4 +108,4 @@ export const selectFinancesBalance = state =>
   state.finance.transactions.reduce((acc, el) => (acc += el.amount), 0);
 
 export const finance = financeSlice.reducer;
-export const { changeBalanceStatus } = financeSlice.actions;
+export const { resetErrorTransaction } = financeSlice.actions;

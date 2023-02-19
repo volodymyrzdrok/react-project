@@ -68,7 +68,10 @@ const ModalAddTransaction = ({
             value: categNameFromData(),
             label: categNameFromData(),
           },
-          comment: newObjTransaction.comment,
+          comment:
+            newObjTransaction.comment === '...'
+              ? ''
+              : newObjTransaction.comment,
           amount:
             newObjTransaction.amount > 0
               ? newObjTransaction.amount
@@ -97,7 +100,7 @@ const ModalAddTransaction = ({
           transactionDate,
           type,
           categoryId,
-          comment,
+          comment: comment ? comment : '...',
           amount: isChacked ? amount * -1 : Number(amount),
         };
 

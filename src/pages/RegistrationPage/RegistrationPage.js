@@ -42,6 +42,7 @@ const RegistrationPage = () => {
           </div>
         </div>
       </div>
+
       <ToastContainer />
     </div>
   );
