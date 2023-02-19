@@ -6,7 +6,6 @@ import {
   selectIsModalLogoutOpen,
   toggleModalLogout,
 } from 'redux/global/globalSlice';
-// import { logoutUser } from 'redux/session/sessionOperations';
 import { selectUserName } from 'redux/session/sessionSlice';
 
 import sprite from '../../assets/icons/symbol-defs.svg';
