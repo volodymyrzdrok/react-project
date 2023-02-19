@@ -24,19 +24,7 @@ import {
 } from 'redux/finance/financeOperations';
 import { AddTransactionSchema } from 'utils/validation';
 import IconCalendar from 'assets/icons/IconCalendar/IconCalendar';
-
-const options = [
-  { value: 'Main expenses ', label: 'Main expenses' },
-  { value: 'Products', label: 'Products' },
-  { value: 'Car', label: 'Car' },
-  { value: 'Self care', label: 'Self care' },
-  { value: 'Child care', label: 'Child care' },
-  { value: 'Household products', label: 'Household products' },
-  { value: 'Education', label: 'Education' },
-  { value: 'Leisure', label: 'Leisure' },
-  { value: 'Other expenses', label: 'Other expenses' },
-  { value: 'Entertainment', label: 'Entertainment' },
-];
+import { options } from './selectOptionsCategory';
 
 const ModalAddTransaction = ({
   editModal,
@@ -80,7 +68,10 @@ const ModalAddTransaction = ({
             value: categNameFromData(),
             label: categNameFromData(),
           },
-          comment: newObjTransaction.comment,
+          comment:
+            newObjTransaction.comment === '...'
+              ? ''
+              : newObjTransaction.comment,
           amount:
             newObjTransaction.amount > 0
               ? newObjTransaction.amount
@@ -109,7 +100,7 @@ const ModalAddTransaction = ({
           transactionDate,
           type,
           categoryId,
-          comment,
+          comment: comment ? comment : '...',
           amount: isChacked ? amount * -1 : Number(amount),
         };
 

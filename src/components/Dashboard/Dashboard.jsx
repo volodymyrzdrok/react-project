@@ -6,14 +6,18 @@ import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTra
 import { selectIsModalAddTransactionOpen } from '../../redux/global/globalSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  resetErrorTransaction,
   selectCategoriesForId,
   selectFinanceIsLoading,
   selectTransactions,
 } from 'redux/finance/financeSlice';
 import Loader from 'components/Loader/Loader';
 import { removeTransaction } from 'redux/finance/financeOperations';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { toggleModalAddTrans } from 'redux/global/globalSlice';
+import { ToastContainer, toast } from 'react-toastify';
+import { settingAlert } from 'utils/settingAlert';
+import { selectFinanceErrorStatus } from '../../redux/finance/financeSlice.js';
 
 const Dashboard = () => {
   const dispatch = useDispatch();
@@ -33,6 +37,15 @@ const Dashboard = () => {
     setOpenEditModal(true);
     dispatch(toggleModalAddTrans());
   };
+
+  const errorFinance = useSelector(selectFinanceErrorStatus);
+
+  useEffect(() => {
+    if (errorFinance) {
+      toast.warning('Please, try again )', settingAlert());
+      dispatch(resetErrorTransaction());
+    }
+  }, [errorFinance, dispatch]);
 
   return (
     <>
@@ -271,6 +284,7 @@ const Dashboard = () => {
           </>
         )}
       </Media>
+      <ToastContainer />
     </>
   );
 };

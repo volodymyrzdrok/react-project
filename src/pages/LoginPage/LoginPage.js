@@ -1,4 +1,3 @@
-// import LoginExample from '../../EXAMPLE/LoginExample';
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { resetAuthError, selectAuthError } from 'redux/session/sessionSlice';
@@ -44,8 +43,7 @@ const LoginPage = () => {
           </div>
         </div>
       </div>
-      {/* <LoginForm /> */}
-      {/* <LoginExample /> */}
+
       <ToastContainer />
     </div>
   );

@@ -23,8 +23,6 @@
 .text {
   font-family: 'Poppins-bold';
   @include font(20px, 35px);
-  // font-size: 30px;
-  // line-height: 45px;
   color: $mainTextColor;
 
   @include tablet-media {
@@ -38,9 +36,6 @@
 
   font-family: 'Circe';
   @include font(18, 27);
-  // font-weight: 400;
-  // font-size: 18px;
-  // line-height: 27px;
   text-align: right;
 
   color: $headerTextColor;

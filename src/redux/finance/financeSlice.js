@@ -24,7 +24,11 @@ const defaultState = {
 export const financeSlice = createSlice({
   name: 'finance',
   initialState: defaultState,
-  reducers: {},
+  reducers: {
+    resetErrorTransaction(state, _) {
+      state.error = null;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(loginUser.fulfilled, (state, { payload }) => {
@@ -83,7 +87,10 @@ export const financeSlice = createSlice({
   },
 });
 
-export const selectTransactions = state => state.finance.transactions;
+export const selectTransactions = state =>
+  state.finance.transactions
+    .slice()
+    .sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
 export const selectFinanceIsLoading = state => state.finance.isLoading;
 export const selectFinanceErrorStatus = state => state.finance.error;
 export const selectCategoriesForId = state =>
@@ -104,4 +111,4 @@ export const selectFinancesBalance = state =>
   state.finance.transactions.reduce((acc, el) => (acc += el.amount), 0);
 
 export const finance = financeSlice.reducer;
-export const { changeBalanceStatus } = financeSlice.actions;
+export const { resetErrorTransaction } = financeSlice.actions;

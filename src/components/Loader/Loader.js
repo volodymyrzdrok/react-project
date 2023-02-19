@@ -1,6 +1,5 @@
 import { PacmanLoader } from 'react-spinners';
 import { Box } from '@mui/material';
-// import Modal from '@mui/material/Modal';
 
 const style = {
   position: 'absolute',

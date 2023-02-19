@@ -1,9 +1,7 @@
 @import '../../index.scss';
 
 .mobailTrList {
-  // position: relative;
   color: inherit;
-
   margin-top: 32px;
 }
 
@@ -14,9 +12,7 @@
   background-color: #fff;
   margin-bottom: 10px;
   display: flex;
-  @include mobile-only-media {
-    // width: 400px;
-  }
+
   &_INCOME {
     &::before {
       content: '';
@@ -179,12 +175,7 @@
   }
 }
 
-// .dataTable {
-// position: relative;
-// }
-
 .tableBody {
-  // border-collapse: collapse;
   position: relative;
 }
 
@@ -205,6 +196,9 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  &::first-letter {
+    text-transform: capitalize;
+  }
 
   &:nth-child(1) {
     padding-left: 20px;
@@ -330,10 +324,6 @@
   color: #ffffff;
 }
 
-// .buttonSvg{
-
-// }
-
 .mobileTrItem__edit {
   cursor: pointer;
   width: 46px;
@@ -352,14 +342,3 @@
   fill: transparent;
   stroke: currentColor;
 }
-
-// .tableTrList{
-//   padding-top: 46px;
-//   // @include tablet-media {
-//   //   padding-top: 20px;
-//   // }
-
-//   // @include desktop-media {
-//   //   padding-top: 46px;
-//   // }
-// }
