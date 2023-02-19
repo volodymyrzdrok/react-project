@@ -87,7 +87,10 @@ export const financeSlice = createSlice({
   },
 });
 
-export const selectTransactions = state => state.finance.transactions;
+export const selectTransactions = state =>
+  state.finance.transactions
+    .slice()
+    .sort((a, b) => new Date(b.transactionDate) - new Date(a.transactionDate));
 export const selectFinanceIsLoading = state => state.finance.isLoading;
 export const selectFinanceErrorStatus = state => state.finance.error;
 export const selectCategoriesForId = state =>
