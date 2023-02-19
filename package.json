@@ -1,8 +1,8 @@
 {
-  "name": "react-project",
+  "name": "where-my-money",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://volodymyrzdrok.github.io/react-project",
+  "homepage": "https://volodymyrzdrok.github.io/where-my-money",
   "dependencies": {
     "@chakra-ui/icons": "^2.0.17",
     "@chakra-ui/react": "^2.4.9",

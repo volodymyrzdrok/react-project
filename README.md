@@ -54,6 +54,6 @@ If you have any questions or suggestions, please feel free to contact us:
 - [Myroslava Siryk](https://github.com/Myro4ka)
 
 You can also submit bug reports or feature requests on our GitHub repository:
-[Wallet](https://github.com/volodymyrzdrok/react-project)
+[Wallet](https://github.com/volodymyrzdrok/where-my-money)
 
 We appreciate your feedback and look forward to hearing from you!
