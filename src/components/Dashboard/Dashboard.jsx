@@ -12,7 +12,10 @@ import {
   selectTransactions,
 } from 'redux/finance/financeSlice';
 import Loader from 'components/Loader/Loader';
-import { removeTransaction } from 'redux/finance/financeOperations';
+import {
+  getCategoriesTransaction,
+  removeTransaction,
+} from 'redux/finance/financeOperations';
 import { useEffect, useState } from 'react';
 import { toggleModalAddTrans } from 'redux/global/globalSlice';
 import { ToastContainer, toast } from 'react-toastify';
@@ -28,8 +31,13 @@ const Dashboard = () => {
   const [openEditModal, setOpenEditModal] = useState(false);
   const [transactionObj, setTransactionObj] = useState(null);
 
-  const categoryFunc = categoryId =>
-    categoriesTransForId[categoryId.toLowerCase()].name;
+  useEffect(() => {
+    dispatch(getCategoriesTransaction());
+  }, [dispatch]);
+
+  const categoryFunc = categoryId => {
+    return categoriesTransForId[categoryId.toLowerCase()]?.name ?? '';
+  };
 
   const handleOpenEdit = obj => {
     setTransactionObj(obj);

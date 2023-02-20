@@ -12,7 +12,7 @@ const defaultState = {
   },
   idToken: null,
   isLoading: false,
-  isFetchingCurrentUser: false,
+  isFetchingCurrentUser: true,
   error: null,
 };
 
@@ -23,12 +23,15 @@ export const sessionSlice = createSlice({
     resetAuthError(state, action) {
       state.error = null;
     },
+    resetIsRefreshing(state, _) {
+      state.isFetchingCurrentUser = false;
+    },
   },
   extraReducers: builder => {
     builder
 
       .addCase(logoutUser.fulfilled, (state, { payload }) => {
-        return (state = defaultState);
+        return { ...defaultState, isFetchingCurrentUser: false };
       })
       .addCase(getUserCurrent.pending, (state, { payload }) => {
         state.isFetchingCurrentUser = true;
@@ -101,4 +104,4 @@ export const selectFetchingCurrentUser = state =>
 export const selectIsLoadingSession = state => state.session.isLoading;
 
 export const session = persistReducer(persistConfig, sessionSlice.reducer);
-export const { resetAuthError } = sessionSlice.actions;
+export const { resetAuthError, resetIsRefreshing } = sessionSlice.actions;
