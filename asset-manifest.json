@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/where-my-money/static/css/main.eb8fe271.css",
-    "main.js": "/where-my-money/static/js/main.a3424ca1.js",
+    "main.js": "/where-my-money/static/js/main.bd8739e7.js",
     "static/css/872.563eaaaa.chunk.css": "/where-my-money/static/css/872.563eaaaa.chunk.css",
-    "static/js/872.2bd07d9c.chunk.js": "/where-my-money/static/js/872.2bd07d9c.chunk.js",
+    "static/js/872.43a4f357.chunk.js": "/where-my-money/static/js/872.43a4f357.chunk.js",
     "static/css/829.01e95ba8.chunk.css": "/where-my-money/static/css/829.01e95ba8.chunk.css",
     "static/js/829.f407a493.chunk.js": "/where-my-money/static/js/829.f407a493.chunk.js",
     "static/css/126.01e95ba8.chunk.css": "/where-my-money/static/css/126.01e95ba8.chunk.css",
     "static/js/126.a6859b35.chunk.js": "/where-my-money/static/js/126.a6859b35.chunk.js",
     "static/css/627.0377afd9.chunk.css": "/where-my-money/static/css/627.0377afd9.chunk.css",
-    "static/js/627.20cd083e.chunk.js": "/where-my-money/static/js/627.20cd083e.chunk.js",
+    "static/js/627.90aade10.chunk.js": "/where-my-money/static/js/627.90aade10.chunk.js",
     "static/css/152.2c9886f1.chunk.css": "/where-my-money/static/css/152.2c9886f1.chunk.css",
     "static/js/152.58016138.chunk.js": "/where-my-money/static/js/152.58016138.chunk.js",
     "static/js/668.d05c40ca.chunk.js": "/where-my-money/static/js/668.d05c40ca.chunk.js",
@@ -31,15 +31,15 @@
     "static/media/symbol-defs.svg": "/where-my-money/static/media/symbol-defs.0605c9efa42f82899883cf3576c53397.svg",
     "index.html": "/where-my-money/index.html",
     "main.eb8fe271.css.map": "/where-my-money/static/css/main.eb8fe271.css.map",
-    "main.a3424ca1.js.map": "/where-my-money/static/js/main.a3424ca1.js.map",
+    "main.bd8739e7.js.map": "/where-my-money/static/js/main.bd8739e7.js.map",
     "872.563eaaaa.chunk.css.map": "/where-my-money/static/css/872.563eaaaa.chunk.css.map",
-    "872.2bd07d9c.chunk.js.map": "/where-my-money/static/js/872.2bd07d9c.chunk.js.map",
+    "872.43a4f357.chunk.js.map": "/where-my-money/static/js/872.43a4f357.chunk.js.map",
     "829.01e95ba8.chunk.css.map": "/where-my-money/static/css/829.01e95ba8.chunk.css.map",
     "829.f407a493.chunk.js.map": "/where-my-money/static/js/829.f407a493.chunk.js.map",
     "126.01e95ba8.chunk.css.map": "/where-my-money/static/css/126.01e95ba8.chunk.css.map",
     "126.a6859b35.chunk.js.map": "/where-my-money/static/js/126.a6859b35.chunk.js.map",
     "627.0377afd9.chunk.css.map": "/where-my-money/static/css/627.0377afd9.chunk.css.map",
-    "627.20cd083e.chunk.js.map": "/where-my-money/static/js/627.20cd083e.chunk.js.map",
+    "627.90aade10.chunk.js.map": "/where-my-money/static/js/627.90aade10.chunk.js.map",
     "152.2c9886f1.chunk.css.map": "/where-my-money/static/css/152.2c9886f1.chunk.css.map",
     "152.58016138.chunk.js.map": "/where-my-money/static/js/152.58016138.chunk.js.map",
     "668.d05c40ca.chunk.js.map": "/where-my-money/static/js/668.d05c40ca.chunk.js.map",
@@ -52,6 +52,6 @@
   },
   "entrypoints": [
     "static/css/main.eb8fe271.css",
-    "static/js/main.a3424ca1.js"
+    "static/js/main.bd8739e7.js"
   ]
 }
