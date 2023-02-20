@@ -25,6 +25,7 @@ import {
 import { AddTransactionSchema } from 'utils/validation';
 import IconCalendar from 'assets/icons/IconCalendar/IconCalendar';
 import { options } from './selectOptionsCategory';
+import './calendarStyle.scss';
 
 const ModalAddTransaction = ({
   editModal,

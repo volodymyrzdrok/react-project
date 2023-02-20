@@ -2,7 +2,6 @@ import s from './Dashboard.module.scss';
 import Media from 'react-media';
 import IconSV from '../../assets/icons/symbol-defs.svg';
 import ModalAddTransaction from 'components/ModalAddTransaction/ModalAddTransaction';
-import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 import { selectIsModalAddTransactionOpen } from '../../redux/global/globalSlice.js';
 import { useDispatch, useSelector } from 'react-redux';
 import {
@@ -56,7 +55,6 @@ const Dashboard = () => {
           newObjTransaction={transactionObj}
         />
       )}
-      <ButtonAddTransactions />
       <Media
         queries={{
           small: '(max-width: 767px)',
