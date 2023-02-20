@@ -12,6 +12,7 @@ import Loader from 'components/Loader/Loader';
 import { useDispatch } from 'react-redux';
 import { fetchAllTransactions } from 'redux/finance/financeOperations';
 import routes from 'utils/routes';
+import ButtonAddTransactions from 'components/ButtonAddTransactions/ButtonAddTransactions';
 
 const HomePage = () => {
   const isTablet = useMediaQuery({ query: '(min-width: 768px)' });
@@ -27,9 +28,12 @@ const HomePage = () => {
     location.pathname === routes.currency ||
     (location.pathname === routes.statistics && onlyMobile);
 
+  const visibleAddBtn = location.pathname === routes.dashboard;
+
   return (
     <>
       <Header />
+      {visibleAddBtn && <ButtonAddTransactions />}
       <div className={s.background}>
         <div className={s.backdrop}>
           <div className="container">
