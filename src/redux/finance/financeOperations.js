@@ -6,9 +6,6 @@ export const getCategoriesTransaction = createAsyncThunk(
   'trans/getCategories',
   async (_, thunkAPI) => {
     const idToken = thunkAPI.getState().session.idToken;
-    if (!idToken) {
-      return thunkAPI.rejectWithValue('Unable to fetch user');
-    }
     try {
       setAuthHeader(idToken);
       const res = await axios.get('/api/transaction-categories');
@@ -16,8 +13,16 @@ export const getCategoriesTransaction = createAsyncThunk(
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
     }
+  },
+  {
+    condition: (_, { getState }) => {
+      const categories = getState().finance.categoriesTrans;
+
+      return categories.length > 0 ? false : true;
+    },
   }
 );
+
 export const fetchAllTransactions = createAsyncThunk(
   'trans/fetchAll',
   async (_, thunkAPI) => {

@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { logoutUser } from 'redux/session/sessionOperations';
 
 const defaultState = {
   isModalLogoutOpen: false,
@@ -18,7 +19,11 @@ export const globalSlice = createSlice({
       state.isModalLogoutOpen = !state.isModalLogoutOpen;
     },
   },
-  extraReducers: builder => {},
+  extraReducers: builder => {
+    builder.addCase(logoutUser.fulfilled, (state, { payload }) => {
+      state.isModalLogoutOpen = false;
+    });
+  },
 });
 
 export const selectIsModalLogoutOpen = state => state.global.isModalLogoutOpen;
