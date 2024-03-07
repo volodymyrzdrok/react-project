@@ -13,4 +13,4 @@ export const months = [
   { number: 12, name: 'December' },
 ];
 
-export const years = [2019, 2020, 2021, 2022, 2023];
+export const years = [2019, 2020, 2021, 2022, 2023, 2024];

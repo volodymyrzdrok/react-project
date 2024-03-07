@@ -206,83 +206,93 @@ const Dashboard = () => {
                   </thead>
                 </table>
                 <div className={s.tableScrollBox}>
-                  <table className={s.dataTable}>
-                    <tbody className={s.tableBody}>
-                      {isLoading ? (
-                        <tr className={s.tableRow}>
-                          <td className={s.tableData}>
-                            <Loader />
-                          </td>
-                        </tr>
-                      ) : (
-                        transactions?.map(
-                          ({
-                            id,
-                            categoryId,
-                            amount,
-                            comment,
-                            type,
-                            transactionDate,
-                          }) => {
-                            return (
-                              <tr className={s.tableRow} key={id}>
-                                <td className={s.tableData}>
-                                  {transactionDate.replace('.20', '.')}
-                                </td>
-                                <td className={s.tableData}>
-                                  {type === 'INCOME' ? '+' : '-'}
-                                </td>
-                                <td className={s.tableData}>
-                                  {categoryFunc(categoryId)}
-                                </td>
-                                <td className={s.tableData}>{comment}</td>
-                                <td
-                                  className={
-                                    type === 'INCOME'
-                                      ? s.tableData_INCOME
-                                      : s.tableData_EXPENSE
-                                  }
-                                >
-                                  {amount}
-                                </td>
-                                <td className={s.tableData}>
-                                  <svg
-                                    // svg
-                                    onClick={() => {
-                                      handleOpenEdit({
-                                        amount,
-                                        comment,
-                                        categoryId,
-                                        type,
-                                        transactionDate,
-                                        id,
-                                      });
-                                    }}
-                                    className={s.mysvg}
-                                    width="13"
-                                    height="21"
-                                  >
-                                    <use href={`${IconSV}#icon-pencil`} />
-                                  </svg>
-                                </td>
-                                <td className={s.tableData}>
-                                  <button
-                                    onClick={() =>
-                                      dispatch(removeTransaction(id))
+                  {transactions.length > 0 ? (
+                    <table className={s.dataTable}>
+                      <tbody className={s.tableBody}>
+                        {isLoading ? (
+                          <tr className={s.tableRow}>
+                            <td className={s.tableData}>
+                              <Loader />
+                            </td>
+                          </tr>
+                        ) : (
+                          transactions?.map(
+                            ({
+                              id,
+                              categoryId,
+                              amount,
+                              comment,
+                              type,
+                              transactionDate,
+                            }) => {
+                              return (
+                                <tr className={s.tableRow} key={id}>
+                                  <td className={s.tableData}>
+                                    {transactionDate.replace('.20', '.')}
+                                  </td>
+                                  <td className={s.tableData}>
+                                    {type === 'INCOME' ? '+' : '-'}
+                                  </td>
+                                  <td className={s.tableData}>
+                                    {categoryFunc(categoryId)}
+                                  </td>
+                                  <td className={s.tableData}>{comment}</td>
+                                  <td
+                                    className={
+                                      type === 'INCOME'
+                                        ? s.tableData_INCOME
+                                        : s.tableData_EXPENSE
                                     }
-                                    type="button"
-                                    className={s.button__delete}
                                   >
-                                    Delete
-                                  </button>
-                                </td>
-                              </tr>
-                            );
-                          }
-                        )
-                      )}
-                    </tbody>
-                  </table>
+                                    {amount}
+                                  </td>
+                                  <td className={s.tableData}>
+                                    <svg
+                                      // svg
+                                      onClick={() => {
+                                        handleOpenEdit({
+                                          amount,
+                                          comment,
+                                          categoryId,
+                                          type,
+                                          transactionDate,
+                                          id,
+                                        });
+                                      }}
+                                      className={s.mysvg}
+                                      width="13"
+                                      height="21"
+                                    >
+                                      <use href={`${IconSV}#icon-pencil`} />
+                                    </svg>
+                                  </td>
+                                  <td className={s.tableData}>
+                                    <button
+                                      onClick={() =>
+                                        dispatch(removeTransaction(id))
+                                      }
+                                      type="button"
+                                      className={s.button__delete}
+                                    >
+                                      Delete
+                                    </button>
+                                  </td>
+                                </tr>
+                              );
+                            }
+                          )
+                        )}
+                      </tbody>
+                    </table>
+                  ) : (
+                    <div className={s.divCenterDefaultMessage}>
+                      <p>Currently, there are no transactions!</p>
+                      <p>
+                        To add transactions, press the green '+' button in the
+                        bottom right corner of the screen!
+                      </p>
+                    </div>
+                  )}
                 </div>
               </div>
             )}
